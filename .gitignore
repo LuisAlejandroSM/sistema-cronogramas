@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# fotos subidas en formularios (datos, no código)
+/almacenamiento
+
+# documentos de referencia (formatos oficiales, Excel de la herramienta, PDF) y capturas de diseño:
+# no forman parte del código; se guardan fuera del repositorio
+*.docx
+*.xlsx
+*.pdf
+/estilo/
+/cronogramas_comoson/

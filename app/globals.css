@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
+/* La interfaz está diseñada solo en tema claro: no se cambia el fondo con el modo oscuro
+   del sistema (antes dejaba el fondo negro con tarjetas claras). */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --background: #f4f4f2;
+  --foreground: #1d1d1b;
 }
 
 @theme inline {
@@ -12,15 +15,67 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Identidad Ceveconca: amarillo y negro, con blanco para dar contraste.
+   - marca: amarillo de acento (barras, bordes destacados, ítem activo del menú).
+   - La escala "blue" que usan los componentes se reinterpreta con la marca:
+     50–500 = tonos de amarillo (fondos suaves, bordes, foco),
+     600 = negro (botones principales y selecciones, siempre con texto blanco),
+     700–900 = dorado oscuro legible sobre blanco (enlaces y textos de acento).
+   - La escala "slate" pasa a grises neutros, que combinan mejor con el amarillo. */
+@theme {
+  /* Estilo minimalista: sombras casi imperceptibles (las tarjetas se separan por el fondo). */
+  --shadow-sm: 0 1px 2px 0 rgb(29 29 27 / 0.04);
+  --shadow-md: 0 4px 12px -4px rgb(29 29 27 / 0.1);
+
+  --color-marca: #f5b800;
+  --color-marca-suave: #fff6d6;
+  --color-tinta: #1d1d1b;
+
+  --color-blue-50: #fffaeb;
+  --color-blue-100: #fff1c2;
+  --color-blue-200: #fde68f;
+  --color-blue-300: #f9d75e;
+  --color-blue-400: #f6c629;
+  --color-blue-500: #f5b800;
+  --color-blue-600: #1d1d1b;
+  --color-blue-700: #876200;
+  --color-blue-800: #6b4e00;
+  --color-blue-900: #4a3600;
+
+  --color-slate-50: #fafafa;
+  --color-slate-100: #f4f4f3;
+  --color-slate-200: #e6e6e3;
+  --color-slate-300: #d4d4d0;
+  --color-slate-400: #a3a39e;
+  --color-slate-500: #73736e;
+  --color-slate-600: #545450;
+  --color-slate-700: #3f3f3c;
+  --color-slate-800: #282826;
+  --color-slate-900: #1d1d1b;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Tokens de color para las gráficas del dashboard (paleta validada con el validador de dataviz).
+   La aplicación es de tema claro, por eso solo se definen los pasos para fondo claro. */
+.viz-root {
+  --viz-surface: #ffffff;
+  --viz-text-primary: #0b0b0b;
+  --viz-text-secondary: #52514e;
+  --viz-muted: #898781;
+  --viz-grid: #e1e0d9;
+  --viz-axis: #c3c2b7;
+  /* Series: planificado = categórico 1 (azul), ejecutado = categórico 3 (aqua). */
+  --viz-plan: #2a78d6;
+  --viz-plan-wash: rgba(42, 120, 214, 0.1);
+  --viz-ejec: #1baf7a;
+  /* Estados (reservados para cumplimiento; siempre con ícono + texto). */
+  --viz-good: #0ca30c;
+  --viz-warning: #fab219;
+  --viz-critical: #d03b3b;
+  --viz-good-text: #006300;
 }
