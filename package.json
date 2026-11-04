@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "bun run db/seed.js",
+    "db:crear-admin": "bun run db/crear-admin.js"
   },
   "dependencies": {
     "dotenv": "^18.0.9",

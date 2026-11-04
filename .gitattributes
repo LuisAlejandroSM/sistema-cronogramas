@@ -1,0 +1,2 @@
+# Las migraciones deben ser idénticas byte a byte en Windows y en el servidor Linux.
+drizzle/** text eol=lf

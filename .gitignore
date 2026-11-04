@@ -50,3 +50,9 @@ next-env.d.ts
 *.pdf
 /estilo/
 /cronogramas_comoson/
+
+# datos para migrar a un servidor (incluyen la contraseña cifrada del administrador)
+/migracion/
+
+# plantilla de variables de entorno (sin secretos): sí va al repositorio
+!.env.example

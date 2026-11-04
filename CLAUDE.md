@@ -24,6 +24,7 @@
   - Esquema declarado en `db/schema.js`.
   - Consultas y Server Actions deben utilizar sintaxis nativa de Drizzle (`db.select()`, `db.insert().onConflictDoUpdate()`).
   - En caso de consultas SQL en bruto con `sql`, usar siempre parámetros enlazados para evitar inyecciones SQL.
+  - Cambios de esquema: editar `db/schema.js`, luego `bun run db:generate` y `bun run db:migrate` (migraciones versionadas en `drizzle/`). No usar `drizzle-kit push`: el sistema ya corre en un servidor con datos reales.
 
 ## Estándares de Diseño y UI
 - **refactoring-ui & b2b-dashboard:**
