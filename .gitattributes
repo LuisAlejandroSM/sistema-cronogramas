@@ -2,8 +2,11 @@
 drizzle/** text eol=lf
 
 # Excluir archivos de desarrollo interno al empaquetar ZIP para producción
+AGENTS.md export-ignore
 CLAUDE.md export-ignore
 docs/superpowers/** export-ignore
 scripts/analizar_docx.py export-ignore
 scripts/extraer_excel.py export-ignore
 scripts/generar_todos_formularios.py export-ignore
+.agents/** export-ignore
+skills-lock.json export-ignore
