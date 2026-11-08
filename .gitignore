@@ -67,3 +67,10 @@ scripts/analizar_docx.py
 scripts/extraer_excel.py
 scripts/generar_todos_formularios.py
 
+# Guias de despliegue internas y checklists (solo en PC local)
+CHECKLIST_DESPLIEGUE_SERVIDOR.md
+LEEME_PRIMERO_IT.txt
+docs/
+PASO_A_PASO_MANANA.md
+
+
