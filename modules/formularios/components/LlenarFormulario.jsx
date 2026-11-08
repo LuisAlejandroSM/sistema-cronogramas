@@ -73,6 +73,43 @@ function FormularioInterno({ asignacionId, formulario, fotosIniciales }) {
   const [mensaje, setMensaje] = useState({ tipo: "idle", texto: "" });
   const borradorRestaurado = Boolean(borradorInicial);
 
+  const maxGrupos = formulario.campos.reduce((m, c) => Math.max(m, c.grupoAdicional ?? 1), 1);
+  const [inspectoresVisibles, setInspectoresVisibles] = useState(() => {
+    let visible = 1;
+    for (const c of formulario.campos) {
+      if (c.grupoAdicional) {
+        const tieneValor = Boolean(borradorInicial?.[c.id]) || fotosIniciales.some((f) => f.campoId === c.id);
+        if (tieneValor && c.grupoAdicional > visible) {
+          visible = c.grupoAdicional;
+        }
+      }
+    }
+    return visible;
+  });
+
+  const quitarInspectorAdicional = (grupo) => {
+    const camposDelGrupo = formulario.campos.filter((c) => c.grupoAdicional === grupo);
+    setValores((prev) => {
+      const nuevo = { ...prev };
+      for (const c of camposDelGrupo) delete nuevo[c.id];
+      return nuevo;
+    });
+    setErrores((prev) => {
+      const nuevo = { ...prev };
+      for (const c of camposDelGrupo) delete nuevo[c.id];
+      return nuevo;
+    });
+    for (const c of camposDelGrupo) {
+      const fotosDelCampo = fotos.filter((f) => f.campoId === c.id);
+      for (const f of fotosDelCampo) {
+        quitarFoto(f.id);
+      }
+    }
+    if (grupo === inspectoresVisibles) {
+      setInspectoresVisibles((prev) => Math.max(1, prev - 1));
+    }
+  };
+
   // Guarda el borrador en el dispositivo cada vez que cambian las respuestas.
   useEffect(() => {
     try {
@@ -128,6 +165,7 @@ function FormularioInterno({ asignacionId, formulario, fotosIniciales }) {
     // Revisión rápida en el celular (el servidor vuelve a validar todo).
     const faltantes = {};
     for (const c of formulario.campos) {
+      if (c.grupoAdicional && c.grupoAdicional > inspectoresVisibles) continue;
       if (!TIPOS_CAMPO[c.tipo].esPregunta || !c.obligatorio) continue;
       const valor = TIPOS_CON_ARCHIVO.includes(c.tipo) ? fotos.filter((f) => f.campoId === c.id) : valores[c.id];
       if (c.tipo === "tabla_verificacion") {
@@ -138,6 +176,26 @@ function FormularioInterno({ asignacionId, formulario, fotosIniciales }) {
           c.tipo === "foto" ? "Agregue al menos una foto." : c.tipo === "firma" ? "Falta la firma." : "Esta pregunta es obligatoria.";
       }
     }
+
+    // Validar inspectores adicionales que se hayan empezado a llenar
+    for (let g = 2; g <= inspectoresVisibles; g++) {
+      const camposGrupo = formulario.campos.filter((c) => c.grupoAdicional === g && TIPOS_CAMPO[c.tipo].esPregunta);
+      const algunoLleno = camposGrupo.some((c) => {
+        const valor = TIPOS_CON_ARCHIVO.includes(c.tipo) ? fotos.some((f) => f.campoId === c.id) : valores[c.id];
+        return !estaVacio(c, valor);
+      });
+      if (algunoLleno) {
+        for (const c of camposGrupo) {
+          if (c.etiqueta.toLowerCase().includes("nombre") || c.tipo === "firma") {
+            const valor = TIPOS_CON_ARCHIVO.includes(c.tipo) ? fotos.filter((f) => f.campoId === c.id) : valores[c.id];
+            if (estaVacio(c, valor)) {
+              faltantes[c.id] = c.tipo === "firma" ? "Falta la firma del inspector adicional." : "Escriba el nombre del inspector.";
+            }
+          }
+        }
+      }
+    }
+
     if (Object.values(subiendo).some((n) => n > 0)) {
       setMensaje({ tipo: "error", texto: "Espere a que terminen de subir las fotos." });
       return;
@@ -179,29 +237,69 @@ function FormularioInterno({ asignacionId, formulario, fotosIniciales }) {
       )}
 
       <div className={CLASE_REJILLA}>
-      {formulario.campos.map((c) => (
-        <div key={c.id} id={`bloque-${c.id}`} className={`scroll-mt-20 ${CLASE_ANCHO[anchoEfectivo(c)]}`}>
-          {TIPOS_CON_ARCHIVO.includes(c.tipo) ? (
-            <CampoFormulario
-              campo={c}
-              error={errores[c.id]}
-              fotos={fotos.filter((f) => f.campoId === c.id)}
-              subiendo={subiendo[c.id] ?? 0}
-              onSubirFotos={(archivos) => subirFotos(c, archivos)}
-              onEliminarFoto={quitarFoto}
-              deshabilitado={isPending}
-            />
-          ) : (
-            <CampoFormulario
-              campo={c}
-              valor={valores[c.id]}
-              onCambio={(v) => cambiarValor(c.id, v)}
-              error={errores[c.id]}
-              deshabilitado={isPending}
-            />
-          )}
+      {formulario.campos.map((c) => {
+        if (c.grupoAdicional && c.grupoAdicional > inspectoresVisibles) return null;
+
+        if (c.tipo === "seccion" && c.grupoAdicional >= 2) {
+          return (
+            <div key={c.id} id={`bloque-${c.id}`} className="col-span-full mt-4">
+              <div className="flex items-center justify-between rounded-xl border border-l-[6px] border-slate-200 border-l-blue-600 bg-white px-5 py-3 shadow-sm">
+                <div>
+                  <h3 className="text-base font-bold text-slate-900">{c.etiqueta}</h3>
+                  {c.ayuda && <p className="text-xs text-slate-500">{c.ayuda}</p>}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => quitarInspectorAdicional(c.grupoAdicional)}
+                  className="rounded-lg bg-red-50 px-3 py-1.5 text-xs font-semibold text-red-600 transition hover:bg-red-100 hover:text-red-800"
+                >
+                  Quitar este inspector
+                </button>
+              </div>
+            </div>
+          );
+        }
+
+        return (
+          <div key={c.id} id={`bloque-${c.id}`} className={`scroll-mt-20 ${CLASE_ANCHO[anchoEfectivo(c)]}`}>
+            {TIPOS_CON_ARCHIVO.includes(c.tipo) ? (
+              <CampoFormulario
+                campo={c}
+                error={errores[c.id]}
+                fotos={fotos.filter((f) => f.campoId === c.id)}
+                subiendo={subiendo[c.id] ?? 0}
+                onSubirFotos={(archivos) => subirFotos(c, archivos)}
+                onEliminarFoto={quitarFoto}
+                deshabilitado={isPending}
+              />
+            ) : (
+              <CampoFormulario
+                campo={c}
+                valor={valores[c.id]}
+                onCambio={(v) => cambiarValor(c.id, v)}
+                error={errores[c.id]}
+                deshabilitado={isPending}
+              />
+            )}
+          </div>
+        );
+      })}
+
+      {/* Botón para agregar más inspectores */}
+      {maxGrupos > 1 && inspectoresVisibles < maxGrupos && (
+        <div className="col-span-full py-3">
+          <button
+            type="button"
+            onClick={() => setInspectoresVisibles((prev) => Math.min(maxGrupos, prev + 1))}
+            className="inline-flex items-center gap-2 rounded-xl border-2 border-dashed border-blue-400 bg-blue-50/60 px-5 py-3 text-sm font-semibold text-blue-700 shadow-sm transition hover:border-blue-600 hover:bg-blue-100"
+          >
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+            + Agregar otro inspector
+          </button>
         </div>
-      ))}
+      )}
       </div>
 
       {/* Barra de envío fija abajo (cómoda en el celular) */}

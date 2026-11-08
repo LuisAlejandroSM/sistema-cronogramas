@@ -20,9 +20,24 @@ function Imagen({ id, alt, contener = false }) {
  * @param {{ campos: object[], respuestas: Record<string, unknown>, fotos: { id: string, campoId: string }[] }} props
  */
 export default function VerRespuesta({ campos, respuestas, fotos }) {
+  // Ocultar inspectores adicionales que no tengan información registrada
+  const gruposConDatos = new Set([1]);
+  for (const c of campos) {
+    if (c.grupoAdicional) {
+      const valor = respuestas?.[c.id];
+      const tieneFoto = fotos.some((f) => f.campoId === c.id);
+      if ((valor !== undefined && valor !== null && String(valor).trim() !== "") || tieneFoto) {
+        gruposConDatos.add(c.grupoAdicional);
+      }
+    }
+  }
+
   return (
     <div className={CLASE_REJILLA}>
       {campos.map((c) => {
+        if (c.grupoAdicional && !gruposConDatos.has(c.grupoAdicional)) {
+          return null;
+        }
         const ancho = CLASE_ANCHO[anchoEfectivo(c)];
         if (!TIPOS_CAMPO[c.tipo]?.esPregunta) {
           return (

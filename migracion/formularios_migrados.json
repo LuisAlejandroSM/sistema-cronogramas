@@ -1,13 +1,13 @@
 [
   {
-    "id": "01eb09e2-0417-48da-9a53-6b69c8bcdac8",
-    "titulo": "Inspección de eslingas",
-    "descripcion": "Verificación del estado físico, tejido, costuras y capacidad de carga de las eslingas de izaje antes de su uso.",
-    "codigo": "CVC-SST-FT-107",
+    "id": "387340ad-b5d2-4947-9cab-f23c459aa213",
+    "titulo": "Constancia de inspección de vehículos livianos",
+    "descripcion": "Inspección del vehículo liviano antes de su uso. Marque cada ítem como Bueno (B), Malo (M) o No aplica (N/A) y registre los hallazgos al final.",
+    "codigo": "CVC-SST-FT-00",
     "emision": "Jun-2026",
-    "revision": "01",
+    "revision": "02",
     "rol": "Inspector SIHO",
-    "plantilla_id": "1d2afbce-e1f9-4506-806a-c3103b9d5761",
+    "plantilla_id": null,
     "campos": [
       {
         "id": "c_xaji0y6d",
@@ -30,12 +30,626 @@
         "id": "c_hv3a3zmf",
         "tipo": "texto",
         "ancho": "mitad",
+        "ayuda": "Ej. COB",
+        "etiqueta": "Centro de trabajo",
+        "obligatorio": true
+      },
+      {
+        "id": "c_8mdd4v30",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "2. Datos del conductor y documentación",
+        "obligatorio": false
+      },
+      {
+        "id": "c_t9nt3w5u",
+        "tipo": "texto",
+        "ancho": "mitad",
+        "ayuda": "",
+        "etiqueta": "Nombres y apellidos",
+        "obligatorio": true
+      },
+      {
+        "id": "c_zbikcidk",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nº de licencia",
+        "obligatorio": true
+      },
+      {
+        "id": "c_wnnhj7xv",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Tipo de licencia",
+        "obligatorio": true
+      },
+      {
+        "id": "c_g0fn9xuy",
+        "tipo": "fecha",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Vigencia de la licencia",
+        "obligatorio": true,
+        "hoyPorDefecto": false
+      },
+      {
+        "id": "c_41ibljh7",
+        "tipo": "fecha",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Vigencia del certificado médico",
+        "obligatorio": true,
+        "hoyPorDefecto": false
+      },
+      {
+        "id": "c_5lxo6qji",
+        "tipo": "si_no",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Manejo defensivo",
+        "obligatorio": true
+      },
+      {
+        "id": "c_ujv6oh9s",
+        "tipo": "fecha",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Manejo defensivo: vence",
+        "obligatorio": false,
+        "hoyPorDefecto": false
+      },
+      {
+        "id": "c_dbdw2pcn",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "3. Datos del vehículo",
+        "obligatorio": false
+      },
+      {
+        "id": "c_9t84azyt",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Marca",
+        "obligatorio": true
+      },
+      {
+        "id": "c_jxepq85j",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Clase",
+        "obligatorio": true
+      },
+      {
+        "id": "c_sg65kxvf",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Modelo",
+        "obligatorio": true
+      },
+      {
+        "id": "c_1t2tala7",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Color",
+        "obligatorio": true
+      },
+      {
+        "id": "c_53lc58dr",
+        "tipo": "numero",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Año",
+        "obligatorio": true
+      },
+      {
+        "id": "c_c11ertj5",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Placa",
+        "obligatorio": true
+      },
+      {
+        "id": "c_pht0hl9x",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Capacidad",
+        "obligatorio": false
+      },
+      {
+        "id": "c_pseimvih",
+        "tipo": "numero",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Kilometraje (km)",
+        "obligatorio": true
+      },
+      {
+        "id": "c_cwi64ciy",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Póliza de seguro Nº",
+        "obligatorio": false
+      },
+      {
+        "id": "c_he7ur23g",
+        "tipo": "tabla_verificacion",
+        "ancho": "completo",
+        "etiqueta": "Fluidos",
+        "ayuda": "B = Bueno · M = Malo · N/A = No aplica",
+        "filas": [
+          "COMBUSTIBLE",
+          "REFRIGERANTE",
+          "LIGA DE FRENOS",
+          "ACEITE DE MOTOR",
+          "HIDRÁULICO",
+          "ACEITE DE CAJA"
+        ],
+        "columnas": [
+          "B",
+          "M",
+          "N/A"
+        ],
+        "obligatorio": true
+      },
+      {
+        "id": "c_dppq0y9d",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "4. Elementos de emergencia y seguridad",
+        "obligatorio": false
+      },
+      {
+        "id": "c_om5igqpk",
+        "tipo": "opcion_unica",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Tipo de extintor",
+        "opciones": [
+          "PQS",
+          "CO2"
+        ],
+        "obligatorio": true
+      },
+      {
+        "id": "c_i7p5tb94",
+        "tipo": "numero",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Capacidad del extintor (LBS)",
+        "obligatorio": true
+      },
+      {
+        "id": "c_874frhoc",
+        "tipo": "fecha",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Fecha de vencimiento del extintor",
+        "obligatorio": true,
+        "hoyPorDefecto": false
+      },
+      {
+        "id": "c_n9j2qp89",
+        "tipo": "tabla_verificacion",
+        "ancho": "completo",
+        "etiqueta": "Elementos de emergencia",
+        "ayuda": "B = Bueno · M = Malo · N/A = No aplica",
+        "filas": [
+          "TRIÁNGULOS / CONOS",
+          "LLAVE DE AJUSTE",
+          "GATO",
+          "MANGA DE VIENTO",
+          "LINTERNA",
+          "BOTIQUÍN",
+          "DIM'S (IDENTIFICADOR DE CONDUCTOR)",
+          "CÁMARA DE FATIGA",
+          "CAJA DE HERRAMIENTAS O MALLA DE RESTRICCIÓN",
+          "CHALECOS REFLECTIVOS"
+        ],
+        "columnas": [
+          "SI",
+          "NO"
+        ],
+        "obligatorio": true
+      },
+      {
+        "id": "c_uzfk8ut0",
+        "tipo": "tabla_verificacion",
+        "ancho": "completo",
+        "etiqueta": "5. Sistema eléctrico",
+        "ayuda": "B = Bueno · M = Malo · N/A = No aplica",
+        "filas": [
+          "LUCES DE ALTA Y BAJAS",
+          "LUCES DE FRENO",
+          "LUCES DE CRUCE O GIRO",
+          "LUCES DE RETROCESO",
+          "LUCES INTERMITENTES",
+          "LUZ DE CABINA",
+          "BOCINA O CORNETA",
+          "ALARMA DE RETROCESO",
+          "AIRE ACONDICIONADO",
+          "LIMPIAPARABRISAS",
+          "INDICADORES DE COMBUSTIBLE Y OTROS"
+        ],
+        "columnas": [
+          "B",
+          "M",
+          "N/A"
+        ],
+        "obligatorio": true
+      },
+      {
+        "id": "c_cvs4f8cg",
+        "tipo": "tabla_verificacion",
+        "ancho": "completo",
+        "etiqueta": "6. Sistema mecánico",
+        "ayuda": "B = Bueno · M = Malo · N/A = No aplica",
+        "filas": [
+          "VELOCÍMETRO / ODÓMETRO",
+          "RADIADOR",
+          "DEPÓSITO DE AGUA DEL MOTOR",
+          "CAÑO DE ESCAPE / SILENCIADOR",
+          "SISTEMA DE DIRECCIÓN"
+        ],
+        "columnas": [
+          "B",
+          "M",
+          "N/A"
+        ],
+        "obligatorio": true
+      },
+      {
+        "id": "c_vyie6ivw",
+        "tipo": "tabla_verificacion",
+        "ancho": "completo",
+        "etiqueta": "7. Neumáticos",
+        "ayuda": "B = Bueno · M = Malo · N/A = No aplica",
+        "filas": [
+          "DELANTERO DERECHO",
+          "DELANTERO IZQUIERDO",
+          "TRASERO DERECHO",
+          "TRASERO IZQUIERDO",
+          "REPUESTO 1",
+          "CUÑAS DE SEGURIDAD"
+        ],
+        "columnas": [
+          "B",
+          "M",
+          "N/A"
+        ],
+        "obligatorio": true
+      },
+      {
+        "id": "c_pvs7hzio",
+        "tipo": "tabla_verificacion",
+        "ancho": "completo",
+        "etiqueta": "8. Tapicería",
+        "ayuda": "B = Bueno · M = Malo · N/A = No aplica",
+        "filas": [
+          "ASIENTO DEL CONDUCTOR",
+          "ASIENTO DEL COPILOTO / ACOMPAÑANTE",
+          "ASIENTO TRASERO",
+          "TODOS LOS ASIENTOS CON APOYA CABEZA"
+        ],
+        "columnas": [
+          "B",
+          "M",
+          "N/A"
+        ],
+        "obligatorio": true
+      },
+      {
+        "id": "c_ykl1cq99",
+        "tipo": "tabla_verificacion",
+        "ancho": "completo",
+        "etiqueta": "9. Cristalería",
+        "ayuda": "B = Bueno · M = Malo · N/A = No aplica",
+        "filas": [
+          "PARABRISAS",
+          "VIDRIOS PUERTAS DELANTERAS",
+          "VIDRIOS PUERTAS TRASERAS",
+          "VIDRIO TRASERO",
+          "ESPEJOS RETROVISORES LATERALES"
+        ],
+        "columnas": [
+          "B",
+          "M",
+          "N/A"
+        ],
+        "obligatorio": true
+      },
+      {
+        "id": "c_chj755nf",
+        "tipo": "tabla_verificacion",
+        "ancho": "completo",
+        "etiqueta": "10. Especificaciones especiales",
+        "ayuda": "Varios ítems aplican solo a vehículos con remolque: marque N/A cuando no correspondan.",
+        "filas": [
+          "CINTURÓN DE SEGURIDAD DE 3 PUNTOS PARA TODOS LOS OCUPANTES",
+          "ASIENTOS CON REPOSACABEZAS",
+          "RECORDATORIO DE USO DEL CINTURÓN DE SEGURIDAD",
+          "ANCLAJES DE CINTURONES DE SEGURIDAD SEGÚN REQUISITOS DE LA INDUSTRIA",
+          "SISTEMA DE FRENOS ANTIBLOQUEO QUE CUMPLA CON LOS REQUISITOS DE LA INDUSTRIA",
+          "PROTECCIÓN ACTIVA ANTIVUELCO (ARP) EN EL REMOLQUE",
+          "PROTECCIÓN CONTRA VUELCOS SEGÚN LOS REQUISITOS DE LA INDUSTRIA",
+          "LOS NEUMÁTICOS DEBEN SER DEL MISMO TAMAÑO / MISMO FABRICANTE POR EJE",
+          "NEUMÁTICOS ADECUADOS A LA CARGA/VELOCIDAD, INFLADOS CORRECTAMENTE, PROFUNDIDAD MÍNIMA DE LA BANDA DE RODADURA 1,6 MM (75 %)",
+          "INDICADORES DE POSICIÓN EN LAS TUERCAS DE LOS NEUMÁTICOS",
+          "NEUMÁTICOS DELANTEROS CON BANDA DE RODADURA MÍNIMA DE 3,0 MM Y EL MISMO TAMAÑO/MARCA",
+          "GUARDABARROS EN TODOS LOS NEUMÁTICOS",
+          "NO SE PERMITEN NEUMÁTICOS RECONSTRUIDOS (PRINCIPALMENTE EN EL EJE DELANTERO)",
+          "CABINA QUE CUMPLE CON LOS REQUISITOS DE LA INDUSTRIA",
+          "PROTECCIÓN ANTIEMPOTRAMIENTO DELANTERA Y TRASERA PARA EL REMOLQUE",
+          "PROTECCIÓN LATERAL CONTRA COLISIÓN",
+          "VIDRIO DE SEGURIDAD PARA PARABRISAS",
+          "DOS CALZAS PARA RUEDAS",
+          "SISTEMA DE CONTROL ELECTRÓNICO DE ESTABILIDAD",
+          "TODOS LOS ACCESORIOS Y ESCOTILLAS ASEGURADOS SIN FUGAS EN CASO DE VUELCO",
+          "2 EXTINTORES MÍNIMO (UNO DE 2 KG EN CABINA Y OTRO DE 6 KG MÍNIMO EN REMOLQUE)",
+          "CINTURONES DE SEGURIDAD Y SISTEMAS DE RETENCIÓN SEGÚN REQUISITOS DE LA INDUSTRIA",
+          "MÍNIMO 2 PUERTAS (UNA NORMAL Y UNA DE EMERGENCIA)",
+          "PUERTA(S) DE EMERGENCIA CLARAMENTE MARCADAS",
+          "MARCAS REFLECTANTES EN LA PARTE TRASERA Y EN LOS LATERALES",
+          "DIMS SEGÚN CONTRATO",
+          "ALARMA SONORA DE MARCHA ATRÁS"
+        ],
+        "columnas": [
+          "SI",
+          "NO",
+          "N/A"
+        ],
+        "obligatorio": true
+      },
+      {
+        "id": "c_4zw9xa3k",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Hallazgos y observaciones",
+        "obligatorio": false
+      },
+      {
+        "id": "c_x7eedtjv",
+        "tipo": "parrafo",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Hallazgos y observaciones",
+        "obligatorio": false
+      },
+      {
+        "id": "c_zhwjr64d",
+        "tipo": "foto",
+        "ancho": "completo",
+        "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
+        "etiqueta": "Evidencia fotográfica",
+        "maxFotos": 5,
+        "obligatorio": false
+      },
+      {
+        "id": "c_pja1wj0t",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Validación de la inspección",
+        "obligatorio": false
+      },
+      {
+        "id": "c_pac56t4u",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": true
+      },
+      {
+        "id": "c_fel6246h",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": true
+      },
+      {
+        "id": "c_id25owf7",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false
+      },
+      {
+        "id": "c_5935a0l7",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": true
+      },
+      {
+        "id": "c_253j2d54",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_i3qk2iag",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_l58kxo9t",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_7e8g8jdp",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_0lvsnujz",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_a7tz0ync",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_xll4zklo",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_okep7y6w",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_ktakpuxq",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_phr62gds",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_wm31yiha",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_ir4cowgz",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_rixa11dp",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_g8sbi4q2",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_y9v86wzs",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      }
+    ]
+  },
+  {
+    "id": "01eb09e2-0417-48da-9a53-6b69c8bcdac8",
+    "titulo": "Inspección de eslingas",
+    "descripcion": "Verificación del estado físico, tejido, costuras y capacidad de carga de las eslingas de izaje antes de su uso.",
+    "codigo": "CVC-SST-FT-107",
+    "emision": "Jun-2026",
+    "revision": "01",
+    "rol": "Inspector SIHO",
+    "plantilla_id": "1d2afbce-e1f9-4506-806a-c3103b9d5761",
+    "campos": [
+      {
+        "id": "c_3t60rjiw",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "1. Datos generales",
+        "obligatorio": false
+      },
+      {
+        "id": "c_1swjckjl",
+        "tipo": "fecha",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Fecha",
+        "obligatorio": true,
+        "hoyPorDefecto": true
+      },
+      {
+        "id": "c_teiyzcot",
+        "tipo": "texto",
+        "ancho": "mitad",
         "ayuda": "",
         "etiqueta": "Centro de trabajo / Proyecto",
         "obligatorio": true
       },
       {
-        "id": "c_8mdd4v30",
+        "id": "c_ohp6vz41",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -47,7 +661,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_t9nt3w5u",
+        "id": "c_nam148p0",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "Solo si aplica",
@@ -55,7 +669,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_zbikcidk",
+        "id": "c_tvhhpbmy",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -63,7 +677,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_wnnhj7xv",
+        "id": "c_ofqewaou",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -71,7 +685,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_g0fn9xuy",
+        "id": "c_axeqbnhl",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "2. Verificación del estado de las eslingas",
@@ -94,7 +708,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_41ibljh7",
+        "id": "c_1n13jcat",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -102,7 +716,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_5lxo6qji",
+        "id": "c_9mx2x18h",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -115,7 +729,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ujv6oh9s",
+        "id": "c_afeyuhz1",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -123,7 +737,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_dbdw2pcn",
+        "id": "c_gv0e38da",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "En toneladas o kg",
@@ -131,7 +745,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_9t84azyt",
+        "id": "c_ly8ozcyw",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -139,7 +753,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_jxepq85j",
+        "id": "c_d14ve92m",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "Metros",
@@ -147,7 +761,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_sg65kxvf",
+        "id": "c_pnsm43d8",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -155,7 +769,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_1t2tala7",
+        "id": "c_w3zp08j3",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "Ej. 5:1 o 7:1",
@@ -163,7 +777,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_53lc58dr",
+        "id": "c_trp0j43d",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -171,7 +785,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_c11ertj5",
+        "id": "c_5iqvnb4g",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -179,7 +793,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_pht0hl9x",
+        "id": "c_h2m5zja8",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -188,7 +802,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_pseimvih",
+        "id": "c_dzr1yxr2",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -196,68 +810,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_cwi64ciy",
+        "id": "c_dhylurtp",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_he7ur23g",
+        "id": "c_0lzjjege",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_dppq0y9d",
+        "id": "c_t1ghr09s",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_om5igqpk",
+        "id": "c_kdgigatj",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_i7p5tb94",
+        "id": "c_9tze5r5u",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_qpgb7r3o",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_874frhoc",
+        "id": "c_cwbfuk9e",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_n9j2qp89",
+        "id": "c_1v2isqp4",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_uzfk8ut0",
+        "id": "c_9kwv08hh",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_xfgcaqvk",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_izzqy72w",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_x7ptx63c",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_fl0ukeyz",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_7srcbplj",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_d84u89yj",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_b1qx6gvw",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_rdmly4ly",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_k83tqll8",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_os9xtogn",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -272,7 +989,7 @@
     "plantilla_id": null,
     "campos": [
       {
-        "id": "c_cvs4f8cg",
+        "id": "c_1w1ht7pz",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -280,7 +997,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_vyie6ivw",
+        "id": "c_e9vifttd",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -289,7 +1006,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_pvs7hzio",
+        "id": "c_96qe3rzs",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "Ej. COB / Planta / Proyecto",
@@ -297,7 +1014,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ykl1cq99",
+        "id": "c_j49itn7s",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -305,7 +1022,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_chj755nf",
+        "id": "c_55j2o7s3",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -313,7 +1030,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_4zw9xa3k",
+        "id": "c_kkv9rftm",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -321,7 +1038,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_x7eedtjv",
+        "id": "c_ttqlgzui",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -329,7 +1046,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_zhwjr64d",
+        "id": "c_1b0z3nx3",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -338,7 +1055,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_pja1wj0t",
+        "id": "c_9rbsv55p",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -347,7 +1064,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_pac56t4u",
+        "id": "c_sq0oxfq8",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -355,7 +1072,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_fel6246h",
+        "id": "c_myx444nl",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -364,7 +1081,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_id25owf7",
+        "id": "c_z15bcw79",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -372,7 +1089,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_5935a0l7",
+        "id": "c_0pdw5py6",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -380,7 +1097,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_253j2d54",
+        "id": "c_b2knftu2",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -388,7 +1105,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_i3qk2iag",
+        "id": "c_gc5wi6fq",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -396,7 +1113,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_l58kxo9t",
+        "id": "c_jja26yfp",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -404,7 +1121,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_7e8g8jdp",
+        "id": "c_mvxpj4hn",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -412,7 +1129,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_0lvsnujz",
+        "id": "c_riuu9k9x",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -420,7 +1137,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_a7tz0ync",
+        "id": "c_juy0bvr6",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -428,7 +1145,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_xll4zklo",
+        "id": "c_k2vmwwyz",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -436,7 +1153,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_okep7y6w",
+        "id": "c_x4w6xlpu",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -444,7 +1161,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_ktakpuxq",
+        "id": "c_0dk0get8",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -452,7 +1169,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_phr62gds",
+        "id": "c_t63j3r30",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -460,7 +1177,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_wm31yiha",
+        "id": "c_me8f8409",
         "tipo": "fecha",
         "ancho": "mitad",
         "ayuda": "",
@@ -469,7 +1186,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_ir4cowgz",
+        "id": "c_82n2atqy",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -477,7 +1194,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_rixa11dp",
+        "id": "c_yv37dia5",
         "tipo": "fecha",
         "ancho": "mitad",
         "ayuda": "",
@@ -486,7 +1203,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_g8sbi4q2",
+        "id": "c_u6hc36ko",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -498,7 +1215,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_y9v86wzs",
+        "id": "c_f8krd5eq",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -506,7 +1223,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_3t60rjiw",
+        "id": "c_y08p0fod",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -515,7 +1232,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_1swjckjl",
+        "id": "c_ro8bnp84",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Sistema eléctrico",
@@ -539,7 +1256,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_teiyzcot",
+        "id": "c_dyt9moge",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "5. Sistema mecánico e hidráulico",
@@ -562,7 +1279,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ohp6vz41",
+        "id": "c_4qxxva2i",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "6. Batería, accesorios y seguridad",
@@ -584,7 +1301,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_nam148p0",
+        "id": "c_euc1hh5l",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "7. Tren de rodaje (Orugas)",
@@ -606,7 +1323,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_tvhhpbmy",
+        "id": "c_f6a4fejg",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "8. Elementos de trabajo (Pala y Escarificador)",
@@ -625,7 +1342,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ofqewaou",
+        "id": "c_xaa2ilgb",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "9. Cabina, tapicería y cristalería",
@@ -646,7 +1363,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_axeqbnhl",
+        "id": "c_0s0r2sds",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -654,7 +1371,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_1n13jcat",
+        "id": "c_8b25sq8c",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -662,7 +1379,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_9mx2x18h",
+        "id": "c_royr6ccv",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -671,7 +1388,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_afeyuhz1",
+        "id": "c_cjwtl9tq",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -679,100 +1396,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_gv0e38da",
+        "id": "c_vdz4x1zh",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_ly8ozcyw",
+        "id": "c_qimqodpx",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_d14ve92m",
+        "id": "c_nf7c3dd0",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_pnsm43d8",
+        "id": "c_3uvulemx",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Operador: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_w3zp08j3",
+        "id": "c_15z8vmuh",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_xid4n1u3",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_trp0j43d",
+        "id": "c_493wxa73",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_5iqvnb4g",
+        "id": "c_jgzlma5u",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_h2m5zja8",
+        "id": "c_ofwb0hpm",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_dzr1yxr2",
+        "id": "c_nz1udbfw",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_yjxrpj1e",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_dhylurtp",
+        "id": "c_pkyrybov",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_0lzjjege",
+        "id": "c_akhejla0",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_t1ghr09s",
+        "id": "c_gnzs43c5",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_ba75uuzp",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_eal2w37d",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_4ivsolml",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_gses6m03",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_3ifhv1xg",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -787,7 +1575,7 @@
     "plantilla_id": "7c82eca5-72a0-44b3-b4c4-5322957e84e6",
     "campos": [
       {
-        "id": "c_kdgigatj",
+        "id": "c_1r11q7uw",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -795,7 +1583,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_9tze5r5u",
+        "id": "c_w5wfcpkj",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -804,7 +1592,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_qpgb7r3o",
+        "id": "c_cslqc3c5",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "Ej. COB / Planta / Proyecto",
@@ -812,7 +1600,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_cwbfuk9e",
+        "id": "c_4wsqt26q",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -820,7 +1608,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_1v2isqp4",
+        "id": "c_3xlrfcd6",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -828,7 +1616,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_9kwv08hh",
+        "id": "c_mzsgipps",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -836,7 +1624,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_xfgcaqvk",
+        "id": "c_fnkomv2x",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -844,7 +1632,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_izzqy72w",
+        "id": "c_cdyk0x65",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -853,7 +1641,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_x7ptx63c",
+        "id": "c_mufm8zov",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -862,7 +1650,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_fl0ukeyz",
+        "id": "c_7ln23y30",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -870,7 +1658,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_7srcbplj",
+        "id": "c_ysxpnngh",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -879,7 +1667,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_d84u89yj",
+        "id": "c_8riec4d1",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -887,7 +1675,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_b1qx6gvw",
+        "id": "c_45bm1enf",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -895,7 +1683,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_rdmly4ly",
+        "id": "c_313fpoyi",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -903,7 +1691,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_k83tqll8",
+        "id": "c_pk0qtl3q",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -911,7 +1699,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_os9xtogn",
+        "id": "c_4n89qkns",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -919,7 +1707,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_1w1ht7pz",
+        "id": "c_832ejx5t",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -927,7 +1715,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_e9vifttd",
+        "id": "c_d44k1j6f",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -935,7 +1723,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_96qe3rzs",
+        "id": "c_p8hqmabs",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -943,7 +1731,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_j49itn7s",
+        "id": "c_i9nb74x2",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -951,7 +1739,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_55j2o7s3",
+        "id": "c_ek3zezqa",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -959,7 +1747,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_kkv9rftm",
+        "id": "c_cj4t0sek",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -967,7 +1755,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_ttqlgzui",
+        "id": "c_kbp2qd6v",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -975,7 +1763,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_1b0z3nx3",
+        "id": "c_asifpwio",
         "tipo": "fecha",
         "ancho": "mitad",
         "ayuda": "",
@@ -984,7 +1772,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_9rbsv55p",
+        "id": "c_xd9css9t",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -992,7 +1780,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_sq0oxfq8",
+        "id": "c_oqw9ja2m",
         "tipo": "fecha",
         "ancho": "mitad",
         "ayuda": "",
@@ -1001,7 +1789,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_myx444nl",
+        "id": "c_0w10lbt3",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -1013,7 +1801,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_z15bcw79",
+        "id": "c_g2qzw3c1",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -1021,7 +1809,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_0pdw5py6",
+        "id": "c_qkbhb7s9",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -1030,7 +1818,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_b2knftu2",
+        "id": "c_tj1gm25l",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Sistema eléctrico",
@@ -1057,7 +1845,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_gc5wi6fq",
+        "id": "c_en606n9r",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "5. Sistema mecánico e hidráulico",
@@ -1086,7 +1874,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_jja26yfp",
+        "id": "c_r7s20cv3",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "6. Batería, orugas y cristalería",
@@ -1117,7 +1905,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_mvxpj4hn",
+        "id": "c_tlcxlvpy",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1125,7 +1913,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_riuu9k9x",
+        "id": "c_mb5m9j98",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -1133,7 +1921,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_juy0bvr6",
+        "id": "c_cwn2y8fv",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -1142,7 +1930,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_k2vmwwyz",
+        "id": "c_2bc2nnuv",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1150,100 +1938,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_x4w6xlpu",
+        "id": "c_y8n1utox",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_0dk0get8",
+        "id": "c_ie0rnujj",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_t63j3r30",
+        "id": "c_q9k6re4q",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_me8f8409",
+        "id": "c_6qdy4lmc",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Operador: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_82n2atqy",
+        "id": "c_t64z7w2s",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_ehe2atn2",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_yv37dia5",
+        "id": "c_twdl9zs1",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_u6hc36ko",
+        "id": "c_3c9xqym5",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_f8krd5eq",
+        "id": "c_2xg8p6be",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_y08p0fod",
+        "id": "c_fflzm764",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_jwtektsg",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_ro8bnp84",
+        "id": "c_7fxzv4u3",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_dyt9moge",
+        "id": "c_bbxux1ox",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_4qxxva2i",
+        "id": "c_rwk8r2yk",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_ccprhvlz",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_049enulq",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_jidknwi5",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_flul1rsr",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_la8s8hmb",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -1258,7 +2117,7 @@
     "plantilla_id": "4eb71f6d-13be-4126-bb6c-b4c265b07ab4",
     "campos": [
       {
-        "id": "c_euc1hh5l",
+        "id": "c_r5xqt4p5",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1266,7 +2125,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_f6a4fejg",
+        "id": "c_01nouhtc",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -1275,7 +2134,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_xaa2ilgb",
+        "id": "c_s1k9ye9o",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "Ej. COB / Planta / Proyecto",
@@ -1283,7 +2142,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_0s0r2sds",
+        "id": "c_2m71hssb",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1291,7 +2150,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_8b25sq8c",
+        "id": "c_elrqvslw",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -1299,7 +2158,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_royr6ccv",
+        "id": "c_f90km3tz",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1307,7 +2166,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_cjwtl9tq",
+        "id": "c_k3ny9v20",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1315,7 +2174,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_vdz4x1zh",
+        "id": "c_yar821uz",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -1324,7 +2183,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_qimqodpx",
+        "id": "c_vgww4fyb",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -1333,7 +2192,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_nf7c3dd0",
+        "id": "c_8dalfyo1",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -1341,7 +2200,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_3uvulemx",
+        "id": "c_750cehlx",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -1350,7 +2209,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_15z8vmuh",
+        "id": "c_slg6mm1z",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1358,7 +2217,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_xid4n1u3",
+        "id": "c_xyvgiui9",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1366,7 +2225,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_493wxa73",
+        "id": "c_kkhzlm72",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1374,7 +2233,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_jgzlma5u",
+        "id": "c_jeyn9382",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1382,7 +2241,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ofwb0hpm",
+        "id": "c_kkzmpjrh",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1390,7 +2249,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_nz1udbfw",
+        "id": "c_t7zewviy",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -1398,7 +2257,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_yjxrpj1e",
+        "id": "c_twbozd1a",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1406,7 +2265,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_pkyrybov",
+        "id": "c_t7o75rh8",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -1414,7 +2273,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_akhejla0",
+        "id": "c_lx6dut07",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1422,7 +2281,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_gnzs43c5",
+        "id": "c_6g5g79or",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1430,7 +2289,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_ba75uuzp",
+        "id": "c_7875aud9",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -1438,7 +2297,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_eal2w37d",
+        "id": "c_k9tr74qg",
         "tipo": "fecha",
         "ancho": "mitad",
         "ayuda": "",
@@ -1447,7 +2306,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_4ivsolml",
+        "id": "c_efqjg02u",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -1455,7 +2314,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_gses6m03",
+        "id": "c_1g463sdy",
         "tipo": "fecha",
         "ancho": "mitad",
         "ayuda": "",
@@ -1464,7 +2323,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_3ifhv1xg",
+        "id": "c_gfliji18",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -1476,7 +2335,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_1r11q7uw",
+        "id": "c_k0axycel",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -1484,7 +2343,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_w5wfcpkj",
+        "id": "c_os6zle6k",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -1493,7 +2352,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_cslqc3c5",
+        "id": "c_whef0vot",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Sistema eléctrico y de control",
@@ -1518,7 +2377,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_4wsqt26q",
+        "id": "c_qtxhi15c",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "5. Sistema mecánico e izaje (Side Boom)",
@@ -1547,7 +2406,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_3xlrfcd6",
+        "id": "c_qzcuctsu",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "6. Cabina y señalética",
@@ -1567,7 +2426,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_mzsgipps",
+        "id": "c_flsehuds",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1575,7 +2434,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_fnkomv2x",
+        "id": "c_3qsqcq30",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -1583,7 +2442,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_cdyk0x65",
+        "id": "c_o30ubmc9",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -1592,7 +2451,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_mufm8zov",
+        "id": "c_7c7bo119",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1600,100 +2459,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_7ln23y30",
+        "id": "c_xp9n56ny",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_ysxpnngh",
+        "id": "c_xtxmgtt0",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_8riec4d1",
+        "id": "c_iaakytt3",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_45bm1enf",
+        "id": "c_imj70e3p",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Operador: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_313fpoyi",
+        "id": "c_15ahdbvz",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_b0oih5cs",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_pk0qtl3q",
+        "id": "c_k30lvylk",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_4n89qkns",
+        "id": "c_fxhkc856",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_832ejx5t",
+        "id": "c_wpr97y2l",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_d44k1j6f",
+        "id": "c_ofn1r4kz",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_36u8ueih",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_p8hqmabs",
+        "id": "c_x74d0gjy",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_i9nb74x2",
+        "id": "c_v5g10ur5",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_ek3zezqa",
+        "id": "c_l8a78e9r",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_ivh6t1nt",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_mjsrd9q4",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_6nouhfj7",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_upfln4rx",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_yj38xrg2",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -1708,7 +2638,7 @@
     "plantilla_id": "2a92382a-62d5-4878-88b5-51877f29e511",
     "campos": [
       {
-        "id": "c_cj4t0sek",
+        "id": "c_gzr7txcb",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1716,7 +2646,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_kbp2qd6v",
+        "id": "c_48y1o4iz",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -1725,7 +2655,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_asifpwio",
+        "id": "c_asnwywrr",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -1733,7 +2663,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_xd9css9t",
+        "id": "c_atatj9a3",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1741,7 +2671,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_oqw9ja2m",
+        "id": "c_y36ddfgs",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -1749,7 +2679,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_0w10lbt3",
+        "id": "c_3jonou9i",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1757,7 +2687,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_g2qzw3c1",
+        "id": "c_y4x41dnt",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -1765,7 +2695,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_qkbhb7s9",
+        "id": "c_cagrp2u4",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -1774,7 +2704,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_tj1gm25l",
+        "id": "c_dtbh55rb",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1782,7 +2712,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_en606n9r",
+        "id": "c_c76ub7l8",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1790,7 +2720,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_r7s20cv3",
+        "id": "c_v1zocfi4",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -1802,7 +2732,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_tlcxlvpy",
+        "id": "c_o6l1f90s",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1810,7 +2740,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_mb5m9j98",
+        "id": "c_9bp4m18o",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1818,7 +2748,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_cwn2y8fv",
+        "id": "c_1bj9rm7p",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1826,7 +2756,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_2bc2nnuv",
+        "id": "c_yxdw2zcf",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1834,7 +2764,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_y8n1utox",
+        "id": "c_zw0ldalm",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "Ej. 400 Amp",
@@ -1842,7 +2772,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ie0rnujj",
+        "id": "c_jegqtoam",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -1851,7 +2781,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_q9k6re4q",
+        "id": "c_dvlnknd6",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -1859,7 +2789,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_6qdy4lmc",
+        "id": "c_69ugnekr",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -1871,7 +2801,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_t64z7w2s",
+        "id": "c_cpprcjiw",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "Ej. 10 lbs o 20 lbs",
@@ -1879,7 +2809,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ehe2atn2",
+        "id": "c_vhdk8lw2",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -1888,7 +2818,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_twdl9zs1",
+        "id": "c_lm349el8",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -1896,7 +2826,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_3c9xqym5",
+        "id": "c_hl88kzru",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "Si está en vehículo",
@@ -1904,7 +2834,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_2xg8p6be",
+        "id": "c_in3oeuvt",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Ítems a inspeccionar de la máquina de soldar",
@@ -1944,7 +2874,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_fflzm764",
+        "id": "c_yt8qzpky",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1952,7 +2882,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_jwtektsg",
+        "id": "c_32orwixz",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -1960,7 +2890,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_7fxzv4u3",
+        "id": "c_2c9ros7y",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -1969,7 +2899,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_bbxux1ox",
+        "id": "c_t2m6twd1",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -1977,100 +2907,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_rwk8r2yk",
+        "id": "c_xmxb9yo1",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Soldador: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_ccprhvlz",
+        "id": "c_8pajssuu",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Soldador: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_049enulq",
+        "id": "c_qo1vsmad",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Soldador: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_jidknwi5",
+        "id": "c_o8e7flqh",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Soldador: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_flul1rsr",
+        "id": "c_rrpzlk3e",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_4xyf9igf",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_la8s8hmb",
+        "id": "c_u8iogxpb",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_r5xqt4p5",
+        "id": "c_whvnzh13",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_01nouhtc",
+        "id": "c_cd5glqj5",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_s1k9ye9o",
+        "id": "c_sxvwvm4w",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_3zkwdeek",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_2m71hssb",
+        "id": "c_gyspengw",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_elrqvslw",
+        "id": "c_yx9trflq",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_f90km3tz",
+        "id": "c_bmae38sr",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_yo4rcb1k",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_jtgq01te",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_e13n3bzt",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_9d31k9qm",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_3p91i3vm",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -2085,7 +3086,7 @@
     "plantilla_id": "d8dcbb51-2181-45ed-9527-4e5aaff8cb6c",
     "campos": [
       {
-        "id": "c_k3ny9v20",
+        "id": "c_zwffhhcm",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2093,7 +3094,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_yar821uz",
+        "id": "c_ktlzkj49",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2102,7 +3103,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_vgww4fyb",
+        "id": "c_yd82795e",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -2110,7 +3111,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_8dalfyo1",
+        "id": "c_5iz31yru",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -2122,7 +3123,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_750cehlx",
+        "id": "c_joqw5dsk",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2130,7 +3131,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_slg6mm1z",
+        "id": "c_7n8la100",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2138,7 +3139,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_xyvgiui9",
+        "id": "c_qxmcthph",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -2146,7 +3147,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_kkhzlm72",
+        "id": "c_j3muurmy",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2154,7 +3155,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_jeyn9382",
+        "id": "c_bd2qe4pa",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2162,7 +3163,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_kkzmpjrh",
+        "id": "c_8hyexf7j",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2171,7 +3172,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_t7zewviy",
+        "id": "c_xjn6fokz",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2180,7 +3181,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_twbozd1a",
+        "id": "c_ixzareiy",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -2188,7 +3189,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_t7o75rh8",
+        "id": "c_az39pecn",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2197,7 +3198,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_lx6dut07",
+        "id": "c_0dl5e11e",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -2205,7 +3206,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_6g5g79or",
+        "id": "c_9ftaxp0w",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2214,7 +3215,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_7875aud9",
+        "id": "c_foy4dd1v",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2222,7 +3223,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_k9tr74qg",
+        "id": "c_n8lfjdtv",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2230,7 +3231,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_efqjg02u",
+        "id": "c_v2y4xkss",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2238,7 +3239,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_1g463sdy",
+        "id": "c_0kb68rer",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2246,7 +3247,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_gfliji18",
+        "id": "c_vt997e4u",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2254,7 +3255,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_k0axycel",
+        "id": "c_ny181acj",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2262,7 +3263,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_os6zle6k",
+        "id": "c_bc2swsoz",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "En toneladas",
@@ -2270,7 +3271,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_whef0vot",
+        "id": "c_ctwjlsh3",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2278,7 +3279,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_qtxhi15c",
+        "id": "c_tow4ycz0",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2287,7 +3288,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_qzcuctsu",
+        "id": "c_4cdpqvl0",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Estructura y anclajes",
@@ -2314,7 +3315,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_flsehuds",
+        "id": "c_0ezzf8s2",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "5. Sistema hidráulico y seguridad",
@@ -2347,7 +3348,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_3qsqcq30",
+        "id": "c_zge2j51b",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2355,7 +3356,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_o30ubmc9",
+        "id": "c_3jczucqm",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -2363,7 +3364,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_7c7bo119",
+        "id": "c_runjdu0i",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -2372,7 +3373,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_xp9n56ny",
+        "id": "c_sb5iqnf7",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2380,100 +3381,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_xtxmgtt0",
+        "id": "c_4t60ploz",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_iaakytt3",
+        "id": "c_jcns6g29",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_imj70e3p",
+        "id": "c_8cqk4lta",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_15ahdbvz",
+        "id": "c_hukwqvr1",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Operador: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_b0oih5cs",
+        "id": "c_h61iaoim",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_458ax40d",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_k30lvylk",
+        "id": "c_tirc9zd7",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_fxhkc856",
+        "id": "c_6szn9dde",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_wpr97y2l",
+        "id": "c_3cup8ijl",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_ofn1r4kz",
+        "id": "c_2z0ljch2",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_vffqot8h",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_36u8ueih",
+        "id": "c_ljefy3zb",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_x74d0gjy",
+        "id": "c_4ldimsyj",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_v5g10ur5",
+        "id": "c_9boq0iq2",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_fa39e3nw",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_xuj3ac6p",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_e63lbqgu",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_3obyghgk",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_5bwikotc",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -2488,7 +3560,7 @@
     "plantilla_id": null,
     "campos": [
       {
-        "id": "c_l8a78e9r",
+        "id": "c_keh5sw22",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2496,7 +3568,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_ivh6t1nt",
+        "id": "c_92mtr6sn",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2505,7 +3577,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_mjsrd9q4",
+        "id": "c_glh62c9t",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "Ej. COB / Planta / Proyecto",
@@ -2513,7 +3585,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_6nouhfj7",
+        "id": "c_199dxj37",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2521,7 +3593,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_upfln4rx",
+        "id": "c_c9h42m44",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -2529,7 +3601,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_yj38xrg2",
+        "id": "c_gv3z6bz8",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2537,7 +3609,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_gzr7txcb",
+        "id": "c_uug95rlr",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2545,7 +3617,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_48y1o4iz",
+        "id": "c_dihsa7he",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2554,7 +3626,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_asnwywrr",
+        "id": "c_z74lav71",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2563,7 +3635,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_atatj9a3",
+        "id": "c_448n7odk",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -2571,7 +3643,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_y36ddfgs",
+        "id": "c_ef828xg8",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2580,7 +3652,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_3jonou9i",
+        "id": "c_y72ivgly",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2588,7 +3660,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_y4x41dnt",
+        "id": "c_e088o98b",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2596,7 +3668,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_cagrp2u4",
+        "id": "c_v78hu7f0",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2604,7 +3676,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_dtbh55rb",
+        "id": "c_i9g5dzx5",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2612,7 +3684,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_c76ub7l8",
+        "id": "c_qjicjdan",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2620,7 +3692,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_v1zocfi4",
+        "id": "c_085rntdr",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -2628,7 +3700,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_o6l1f90s",
+        "id": "c_5xyfc4kl",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2636,7 +3708,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_9bp4m18o",
+        "id": "c_8cgn0t6d",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2644,7 +3716,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_1bj9rm7p",
+        "id": "c_vwrb7f6f",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -2652,7 +3724,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_yxdw2zcf",
+        "id": "c_dhgzz0jk",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -2660,7 +3732,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_zw0ldalm",
+        "id": "c_ibu4fmpk",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2668,7 +3740,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_jegqtoam",
+        "id": "c_xvhagkc4",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -2676,7 +3748,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_dvlnknd6",
+        "id": "c_lorxdtg5",
         "tipo": "fecha",
         "ancho": "mitad",
         "ayuda": "",
@@ -2685,7 +3757,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_69ugnekr",
+        "id": "c_nqjqijc1",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -2693,7 +3765,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_cpprcjiw",
+        "id": "c_ydmt8vt4",
         "tipo": "fecha",
         "ancho": "mitad",
         "ayuda": "",
@@ -2702,7 +3774,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_vhdk8lw2",
+        "id": "c_3pt5r5rc",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -2714,7 +3786,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_lm349el8",
+        "id": "c_6zs62ywe",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -2722,7 +3794,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_hl88kzru",
+        "id": "c_1g983ep9",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2731,7 +3803,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_in3oeuvt",
+        "id": "c_p9w4j66c",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Sistema eléctrico",
@@ -2758,7 +3830,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_yt8qzpky",
+        "id": "c_noljq52w",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "5. Sistema mecánico, pala y articulación",
@@ -2788,7 +3860,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_32orwixz",
+        "id": "c_spofv177",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "6. Neumáticos, cabina y cristalería",
@@ -2814,7 +3886,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_2c9ros7y",
+        "id": "c_udktmonr",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2822,7 +3894,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_t2m6twd1",
+        "id": "c_vbjfvyb6",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -2830,7 +3902,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_xmxb9yo1",
+        "id": "c_li076a3k",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -2839,7 +3911,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_8pajssuu",
+        "id": "c_krzd5e9p",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2847,100 +3919,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_qo1vsmad",
+        "id": "c_3jpxgh30",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_o8e7flqh",
+        "id": "c_153sflse",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_rrpzlk3e",
+        "id": "c_45bg34iq",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_4xyf9igf",
+        "id": "c_7zj3sweb",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Operador: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_u8iogxpb",
+        "id": "c_nvg5vmf6",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_0yknfu84",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_whvnzh13",
+        "id": "c_xyjoa21a",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_cd5glqj5",
+        "id": "c_6xvaj2k8",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_sxvwvm4w",
+        "id": "c_xpnmjqy3",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_3zkwdeek",
+        "id": "c_odsx4nxv",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_kdc9x5jz",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_gyspengw",
+        "id": "c_6kf1622v",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_yx9trflq",
+        "id": "c_xyzx9jpn",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_bmae38sr",
+        "id": "c_bzug0it2",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_6ys445gd",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_ej31gymd",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_m0l2ljk4",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_q5v7c6s5",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_nkb4ehou",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -2955,7 +4098,7 @@
     "plantilla_id": "6f8aa883-112f-412b-8f1d-fe8bac5df849",
     "campos": [
       {
-        "id": "c_yo4rcb1k",
+        "id": "c_6qlz2rwg",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2963,7 +4106,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_jtgq01te",
+        "id": "c_waj1g1r1",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -2972,7 +4115,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_e13n3bzt",
+        "id": "c_dwwo8nbh",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "Ej. COB / Planta / Proyecto",
@@ -2980,7 +4123,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_9d31k9qm",
+        "id": "c_nal3gywi",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -2988,7 +4131,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_3p91i3vm",
+        "id": "c_ymenvg3k",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -2996,7 +4139,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_zwffhhcm",
+        "id": "c_k0vm59m6",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3004,7 +4147,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ktlzkj49",
+        "id": "c_mg87oi0e",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3012,7 +4155,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_yd82795e",
+        "id": "c_0vgnxb5j",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -3021,7 +4164,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_5iz31yru",
+        "id": "c_tb9xxayp",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -3030,7 +4173,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_joqw5dsk",
+        "id": "c_ntrfzwkx",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -3038,7 +4181,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_7n8la100",
+        "id": "c_xjve3dze",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -3047,7 +4190,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_qxmcthph",
+        "id": "c_edhhjshz",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3055,7 +4198,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_j3muurmy",
+        "id": "c_kbrh7lay",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3063,7 +4206,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_bd2qe4pa",
+        "id": "c_64yfds0d",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3071,7 +4214,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_8hyexf7j",
+        "id": "c_ji9kqdgb",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3079,7 +4222,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_xjn6fokz",
+        "id": "c_k2l0d1b4",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3087,7 +4230,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ixzareiy",
+        "id": "c_xgmpw5d3",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -3095,7 +4238,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_az39pecn",
+        "id": "c_go8jn42x",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3103,7 +4246,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_0dl5e11e",
+        "id": "c_2ezc7fov",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3111,7 +4254,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_9ftaxp0w",
+        "id": "c_2ygnmby4",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -3119,7 +4262,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_foy4dd1v",
+        "id": "c_9e7eobjl",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3127,7 +4270,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_n8lfjdtv",
+        "id": "c_zy1uu9ym",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3135,7 +4278,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_v2y4xkss",
+        "id": "c_szdximyn",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -3147,7 +4290,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_0kb68rer",
+        "id": "c_4u9bxf44",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -3155,7 +4298,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_vt997e4u",
+        "id": "c_5cri8bix",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -3164,7 +4307,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_ny181acj",
+        "id": "c_oiq2q4qe",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "Elementos de seguridad requeridos",
@@ -3188,7 +4331,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_bc2swsoz",
+        "id": "c_rxdouadv",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Sistema eléctrico y mecánico",
@@ -3219,7 +4362,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ctwjlsh3",
+        "id": "c_wkshy8nb",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "5. Neumáticos, frenos y acoples",
@@ -3244,7 +4387,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_tow4ycz0",
+        "id": "c_iquwrxze",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "6. Tapicería, cristalería y especificaciones",
@@ -3267,7 +4410,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_4cdpqvl0",
+        "id": "c_1hm38ksz",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3275,7 +4418,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_0ezzf8s2",
+        "id": "c_bffzzdvg",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -3283,7 +4426,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_zge2j51b",
+        "id": "c_7oq2zdo7",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -3292,7 +4435,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_3jczucqm",
+        "id": "c_4v1qx8er",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3300,100 +4443,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_runjdu0i",
+        "id": "c_tb74rs7g",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Conductor: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_sb5iqnf7",
+        "id": "c_u0env5sn",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Conductor: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_4t60ploz",
+        "id": "c_961j88qe",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Conductor: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_jcns6g29",
+        "id": "c_oz0kz4z7",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Conductor: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_8cqk4lta",
+        "id": "c_whwkmy9x",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_8sylemru",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_hukwqvr1",
+        "id": "c_yp04k43s",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_h61iaoim",
+        "id": "c_afyh1fkj",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_458ax40d",
+        "id": "c_4yk1b3d5",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_tirc9zd7",
+        "id": "c_050ui22k",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_x7n89lta",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_6szn9dde",
+        "id": "c_jw2536zx",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_3cup8ijl",
+        "id": "c_1tv18kgy",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_2z0ljch2",
+        "id": "c_ggsnpuev",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_jlzfflb7",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_wxrum2lh",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_gcsotdhh",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_lmh1t939",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_ayq6ww8y",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -3408,7 +4622,7 @@
     "plantilla_id": "dbdbaea7-0ba8-4367-89d1-734cedefaca7",
     "campos": [
       {
-        "id": "c_vffqot8h",
+        "id": "c_l68ntk63",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3416,7 +4630,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_ljefy3zb",
+        "id": "c_n2qb6gs8",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -3425,7 +4639,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_4ldimsyj",
+        "id": "c_g8tacy15",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "Ej. COB / Planta / Proyecto",
@@ -3433,7 +4647,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_9boq0iq2",
+        "id": "c_pdtz91x7",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3441,7 +4655,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_fa39e3nw",
+        "id": "c_0fqldb2u",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -3449,7 +4663,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_xuj3ac6p",
+        "id": "c_uijnwpay",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3457,7 +4671,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_e63lbqgu",
+        "id": "c_txw1vzc7",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3465,7 +4679,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_3obyghgk",
+        "id": "c_d2kd1pox",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -3474,7 +4688,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_5bwikotc",
+        "id": "c_rteo2t8f",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -3483,7 +4697,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_keh5sw22",
+        "id": "c_y620n8tt",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -3491,7 +4705,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_92mtr6sn",
+        "id": "c_eavt8k06",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -3500,7 +4714,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_glh62c9t",
+        "id": "c_moxsfh4g",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3508,7 +4722,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_199dxj37",
+        "id": "c_g24479qt",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3516,7 +4730,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_c9h42m44",
+        "id": "c_kcd0rlex",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3524,7 +4738,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_gv3z6bz8",
+        "id": "c_dw6lqwlv",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3532,7 +4746,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_uug95rlr",
+        "id": "c_unlpaih0",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3540,7 +4754,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_dihsa7he",
+        "id": "c_p4e05qmk",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -3548,7 +4762,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_z74lav71",
+        "id": "c_tgv44ftj",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3556,7 +4770,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_448n7odk",
+        "id": "c_5ccasbuo",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3564,7 +4778,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ef828xg8",
+        "id": "c_v6tt9q1n",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -3572,7 +4786,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_y72ivgly",
+        "id": "c_i10kqsos",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3580,7 +4794,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_e088o98b",
+        "id": "c_x43wfsqg",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3588,7 +4802,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_v78hu7f0",
+        "id": "c_8x80rmhr",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -3596,7 +4810,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_i9g5dzx5",
+        "id": "c_cnbh6nqq",
         "tipo": "fecha",
         "ancho": "mitad",
         "ayuda": "",
@@ -3605,7 +4819,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_qjicjdan",
+        "id": "c_b9lzs34j",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -3613,7 +4827,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_085rntdr",
+        "id": "c_tgxnx4sn",
         "tipo": "fecha",
         "ancho": "mitad",
         "ayuda": "",
@@ -3622,7 +4836,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_5xyfc4kl",
+        "id": "c_6sm5rrvs",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -3634,7 +4848,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_8cgn0t6d",
+        "id": "c_ffcxhgnz",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -3642,7 +4856,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_vwrb7f6f",
+        "id": "c_ei3zrrhf",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -3651,7 +4865,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_dhgzz0jk",
+        "id": "c_4abufwbu",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Componentes principales y motor",
@@ -3676,7 +4890,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ibu4fmpk",
+        "id": "c_cjg8vuaz",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "5. Mecanismo de zanjado y seguridad",
@@ -3705,7 +4919,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_xvhagkc4",
+        "id": "c_xkdq95g3",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "6. Cabina y cristalería",
@@ -3726,7 +4940,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_lorxdtg5",
+        "id": "c_v23gxj0m",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3734,7 +4948,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_nqjqijc1",
+        "id": "c_qvindh4s",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -3742,7 +4956,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_ydmt8vt4",
+        "id": "c_pfdrwb2s",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -3751,7 +4965,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_3pt5r5rc",
+        "id": "c_erev361x",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3759,100 +4973,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_6zs62ywe",
+        "id": "c_snbti22n",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_1g983ep9",
+        "id": "c_v01zderi",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_p9w4j66c",
+        "id": "c_4k5ogz2u",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Operador: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_noljq52w",
+        "id": "c_eaxylnfx",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Operador: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_spofv177",
+        "id": "c_j4pnjy1o",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_2rntjlmz",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_udktmonr",
+        "id": "c_04x0qzfh",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_vbjfvyb6",
+        "id": "c_omtzzf8a",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_li076a3k",
+        "id": "c_df7pchcb",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_krzd5e9p",
+        "id": "c_n9wszv83",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_xphx2kbv",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_3jpxgh30",
+        "id": "c_sigbiaf9",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_153sflse",
+        "id": "c_2movs0cd",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_45bg34iq",
+        "id": "c_k36m8jvh",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_7ujodck8",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_2853uy8u",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_118qqvae",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_cw9yil8s",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_a3idy3c7",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -3867,7 +5152,7 @@
     "plantilla_id": "bf854228-3bf0-4761-a8a5-f8d330d829ce",
     "campos": [
       {
-        "id": "c_7zj3sweb",
+        "id": "c_rm6j8y6r",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3875,7 +5160,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_nvg5vmf6",
+        "id": "c_h05hhiwf",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -3884,7 +5169,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_0yknfu84",
+        "id": "c_d7yxw1tb",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -3892,7 +5177,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_xyjoa21a",
+        "id": "c_rwr965r9",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -3904,7 +5189,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_6xvaj2k8",
+        "id": "c_6khub2rt",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "Solo si aplica",
@@ -3912,7 +5197,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_xpnmjqy3",
+        "id": "c_soyg9zqy",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -3920,7 +5205,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_odsx4nxv",
+        "id": "c_ahulwjti",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -3928,7 +5213,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_kdc9x5jz",
+        "id": "c_qwnrhzn4",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "2. Información del estado de los grilletes",
@@ -3953,7 +5238,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_6kf1622v",
+        "id": "c_kgeuidji",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -3961,7 +5246,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_xyzx9jpn",
+        "id": "c_pnf8f3gr",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "Ej. Crosby / Green Pin",
@@ -3969,7 +5254,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_bzug0it2",
+        "id": "c_94sz2kuu",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "En toneladas",
@@ -3977,7 +5262,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_6ys445gd",
+        "id": "c_oyc3rwqm",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "Pulgadas (ej. 3/4\", 1\")",
@@ -3985,7 +5270,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ej31gymd",
+        "id": "c_mu7jae58",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -3993,7 +5278,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_m0l2ljk4",
+        "id": "c_huxg2myr",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4001,7 +5286,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_q5v7c6s5",
+        "id": "c_06nkwfg3",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4009,7 +5294,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_nkb4ehou",
+        "id": "c_mwu4cfil",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -4017,7 +5302,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_6qlz2rwg",
+        "id": "c_kjxjq5nv",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -4026,7 +5311,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_waj1g1r1",
+        "id": "c_8oga0x7z",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4034,68 +5319,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_dwwo8nbh",
+        "id": "c_cgdc5tao",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_nal3gywi",
+        "id": "c_1cjfx5li",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_ymenvg3k",
+        "id": "c_kwe4bx4l",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_k0vm59m6",
+        "id": "c_r9tjq8zg",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_mg87oi0e",
+        "id": "c_vwwusxlm",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_t2pnjka3",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_0vgnxb5j",
+        "id": "c_4mqa78ra",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_tb9xxayp",
+        "id": "c_pkianouo",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_ntrfzwkx",
+        "id": "c_f0onjpi1",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_63yk03o4",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_gkwwjwga",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_btgdjz0i",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_frml29q2",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_l48c1cqg",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_433e1i1p",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_0bq1s9ry",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_llwb7sjw",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_h55hewlg",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_je2ab2rv",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -4110,7 +5498,7 @@
     "plantilla_id": "b09d5b1c-74a3-45ce-bb26-9037174d0f3b",
     "campos": [
       {
-        "id": "c_xjve3dze",
+        "id": "c_ndfdw79w",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4118,7 +5506,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_edhhjshz",
+        "id": "c_cxz2ei92",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -4127,7 +5515,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_kbrh7lay",
+        "id": "c_12pgyme6",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -4135,7 +5523,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_64yfds0d",
+        "id": "c_rpkzggm0",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4143,7 +5531,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_ji9kqdgb",
+        "id": "c_j36tcfkj",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -4151,7 +5539,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_k2l0d1b4",
+        "id": "c_nawnga41",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4159,7 +5547,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_xgmpw5d3",
+        "id": "c_izxtnsrt",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -4167,7 +5555,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_go8jn42x",
+        "id": "c_wlxdsc4e",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -4176,7 +5564,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_2ezc7fov",
+        "id": "c_5hrdu4xs",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4184,7 +5572,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_2ygnmby4",
+        "id": "c_zjnvc7hr",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4192,7 +5580,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_9e7eobjl",
+        "id": "c_6c2cu7on",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4200,7 +5588,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_zy1uu9ym",
+        "id": "c_z3jbck88",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "Identificación de color",
@@ -4208,7 +5596,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_szdximyn",
+        "id": "c_d0tgsiwg",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4216,7 +5604,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_4u9bxf44",
+        "id": "c_0odwmqx5",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4224,7 +5612,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_5cri8bix",
+        "id": "c_ggomf9pm",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4232,7 +5620,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_oiq2q4qe",
+        "id": "c_l9ln1p0v",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4240,7 +5628,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_rxdouadv",
+        "id": "c_uh17j8qo",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -4252,7 +5640,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_wkshy8nb",
+        "id": "c_09vs9kkh",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "Ej. 10 lbs o 20 lbs",
@@ -4260,7 +5648,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_iquwrxze",
+        "id": "c_4a3yjtu7",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -4269,7 +5657,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_1hm38ksz",
+        "id": "c_fbmenui3",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -4277,7 +5665,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_bffzzdvg",
+        "id": "c_do7002g3",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -4285,7 +5673,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_7oq2zdo7",
+        "id": "c_yu6vk0uc",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Componentes y condiciones de seguridad del equipo",
@@ -4319,7 +5707,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_4v1qx8er",
+        "id": "c_c1m3o55i",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4327,7 +5715,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_tb74rs7g",
+        "id": "c_xva1nkbt",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -4335,7 +5723,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_u0env5sn",
+        "id": "c_fshb0oqv",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -4344,7 +5732,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_961j88qe",
+        "id": "c_shkoecub",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4352,100 +5740,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_oz0kz4z7",
+        "id": "c_ods1eeur",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Soldador / Oxicortador: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_whwkmy9x",
+        "id": "c_xhw0ic1l",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Soldador / Oxicortador: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_8sylemru",
+        "id": "c_7dypmlva",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Soldador / Oxicortador: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_yp04k43s",
+        "id": "c_k9w9pfb3",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Soldador / Oxicortador: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_afyh1fkj",
+        "id": "c_hn14eb87",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_53ayeqah",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_4yk1b3d5",
+        "id": "c_thsjr0fz",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_050ui22k",
+        "id": "c_auxbgk2w",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_x7n89lta",
+        "id": "c_bxanj4x5",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_jw2536zx",
+        "id": "c_a5xin9dl",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_5tgsq7ai",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_1tv18kgy",
+        "id": "c_tmofmmwi",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_ggsnpuev",
+        "id": "c_9s3w563b",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_jlzfflb7",
+        "id": "c_tkf6xdn8",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_wwiif86l",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_thet25lz",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_se99f77l",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_u8el5015",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_oop767j2",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -4460,7 +5919,7 @@
     "plantilla_id": "e17b2536-f7cb-4b72-b209-970f31ac709b",
     "campos": [
       {
-        "id": "c_wxrum2lh",
+        "id": "c_dg1wjuii",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4468,7 +5927,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_gcsotdhh",
+        "id": "c_ymyrsvzn",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -4477,7 +5936,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_lmh1t939",
+        "id": "c_4regb1aj",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -4485,7 +5944,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ayq6ww8y",
+        "id": "c_o091c795",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4493,7 +5952,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_l68ntk63",
+        "id": "c_rlqiob0n",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -4501,7 +5960,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_n2qb6gs8",
+        "id": "c_lw0vs52s",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4509,7 +5968,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_g8tacy15",
+        "id": "c_q3b9so0u",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4517,7 +5976,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_pdtz91x7",
+        "id": "c_swbkok3q",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -4525,7 +5984,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_0fqldb2u",
+        "id": "c_pwbsf3q0",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -4534,7 +5993,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_uijnwpay",
+        "id": "c_e27zeoqg",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4542,7 +6001,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_txw1vzc7",
+        "id": "c_vzhqjy62",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4550,7 +6009,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_d2kd1pox",
+        "id": "c_zeeqnsn2",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4558,7 +6017,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_rteo2t8f",
+        "id": "c_s8nn16ux",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4566,7 +6025,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_y620n8tt",
+        "id": "c_f5gzpl1q",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -4574,7 +6033,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_eavt8k06",
+        "id": "c_weehwjq4",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4582,7 +6041,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_moxsfh4g",
+        "id": "c_ta5ivroc",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -4594,7 +6053,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_g24479qt",
+        "id": "c_vitwu3bf",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -4602,7 +6061,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_kcd0rlex",
+        "id": "c_xb4y4k7b",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -4611,7 +6070,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_dw6lqwlv",
+        "id": "c_pgyvyv2g",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "Auxiliares de carretera",
@@ -4630,7 +6089,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_unlpaih0",
+        "id": "c_qu7dknnc",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Equipos e insumos médicos asistenciales",
@@ -4670,7 +6129,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_p4e05qmk",
+        "id": "c_ptkezjss",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "5. Carrocería y señalización de emergencia",
@@ -4693,7 +6152,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_tgv44ftj",
+        "id": "c_zwd0w9ry",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4701,7 +6160,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_5ccasbuo",
+        "id": "c_79kvls9m",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -4709,7 +6168,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_v6tt9q1n",
+        "id": "c_euswrgvz",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -4718,7 +6177,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_i10kqsos",
+        "id": "c_9aawe429",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4726,100 +6185,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_x43wfsqg",
+        "id": "c_omuwahk2",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Paramédico: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_8x80rmhr",
+        "id": "c_lslaym0w",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Paramédico: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_cnbh6nqq",
+        "id": "c_bglmy62x",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Paramédico: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_b9lzs34j",
+        "id": "c_rw6tm2o0",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Paramédico: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_tgxnx4sn",
+        "id": "c_4k0lthy2",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_5m8kb9w4",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Conductor: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_6sm5rrvs",
+        "id": "c_uov51zlb",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Conductor: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_ffcxhgnz",
+        "id": "c_oriq8hke",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Conductor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_ei3zrrhf",
+        "id": "c_226parsg",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Conductor: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_4abufwbu",
+        "id": "c_70s1f537",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_ye0qzsa7",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor SST: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_cjg8vuaz",
+        "id": "c_yvdqbsxl",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor SST: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_xkdq95g3",
+        "id": "c_ul6lgjlp",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor SST: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_v23gxj0m",
+        "id": "c_efjawshm",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor SST: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_lfzkicwm",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_peqydbpg",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_vv4zwl3z",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_yt91qe37",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_qqyzqii4",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -4834,7 +6364,7 @@
     "plantilla_id": null,
     "campos": [
       {
-        "id": "c_qvindh4s",
+        "id": "c_w6ozx25q",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4842,7 +6372,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_pfdrwb2s",
+        "id": "c_brmqg1ve",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -4851,7 +6381,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_erev361x",
+        "id": "c_d32lx2to",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "Ej. COB / Planta / Proyecto",
@@ -4859,7 +6389,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_snbti22n",
+        "id": "c_owt9nm3v",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4867,7 +6397,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_v01zderi",
+        "id": "c_2p2tixc7",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -4875,7 +6405,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_4k5ogz2u",
+        "id": "c_urvqt3g8",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4883,7 +6413,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_eaxylnfx",
+        "id": "c_cd31nrxd",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4891,7 +6421,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_j4pnjy1o",
+        "id": "c_356wafft",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -4900,7 +6430,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_2rntjlmz",
+        "id": "c_ouhylu6k",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -4909,7 +6439,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_04x0qzfh",
+        "id": "c_7p9mda9o",
         "tipo": "si_no",
         "ancho": "tercio",
         "ayuda": "",
@@ -4917,7 +6447,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_omtzzf8a",
+        "id": "c_ekntbz3m",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -4926,7 +6456,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_df7pchcb",
+        "id": "c_55izolnn",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -4934,7 +6464,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_n9wszv83",
+        "id": "c_txrgn74f",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4942,7 +6472,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_xphx2kbv",
+        "id": "c_9yecazrp",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4950,7 +6480,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_sigbiaf9",
+        "id": "c_9dxoq2vp",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4958,7 +6488,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_2movs0cd",
+        "id": "c_gstqmgvu",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4966,7 +6496,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_k36m8jvh",
+        "id": "c_4isotn9u",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -4974,7 +6504,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_7ujodck8",
+        "id": "c_zeryf099",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -4982,7 +6512,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_2853uy8u",
+        "id": "c_2qc6dr08",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -4990,7 +6520,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_118qqvae",
+        "id": "c_cw2lbm2q",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -4998,7 +6528,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_cw9yil8s",
+        "id": "c_sq0p82kb",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -5006,7 +6536,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_a3idy3c7",
+        "id": "c_700ucrgb",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -5014,7 +6544,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_rm6j8y6r",
+        "id": "c_93wkcs4k",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -5026,7 +6556,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_h05hhiwf",
+        "id": "c_ek4aegvf",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "",
@@ -5034,7 +6564,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_d7yxw1tb",
+        "id": "c_q3jzr25m",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -5043,7 +6573,7 @@
         "hoyPorDefecto": false
       },
       {
-        "id": "c_rwr965r9",
+        "id": "c_df7fr91i",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "Elementos de seguridad requeridos",
@@ -5066,7 +6596,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_6khub2rt",
+        "id": "c_pwh0mx1e",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "4. Sistema eléctrico, mecánico y salidas",
@@ -5099,7 +6629,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_soyg9zqy",
+        "id": "c_gok01tnz",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "5. Asientos, cinturones de seguridad y neumáticos",
@@ -5126,7 +6656,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ahulwjti",
+        "id": "c_rf5a7qy8",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -5134,7 +6664,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_qwnrhzn4",
+        "id": "c_yb7w8p74",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -5142,7 +6672,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_kgeuidji",
+        "id": "c_mjdxo100",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -5151,7 +6681,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_pnf8f3gr",
+        "id": "c_vhmygty3",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -5159,100 +6689,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_94sz2kuu",
+        "id": "c_addqhkga",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Conductor: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_oyc3rwqm",
+        "id": "c_d7x48wze",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Conductor: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_mu7jae58",
+        "id": "c_4ex6u86z",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Conductor: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_huxg2myr",
+        "id": "c_jq7w7jp6",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Conductor: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_06nkwfg3",
+        "id": "c_1lfc1nlc",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_8jpr7vgr",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
-        "obligatorio": true
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_mwu4cfil",
+        "id": "c_f1hx6zdc",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
-        "obligatorio": true
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_kjxjq5nv",
+        "id": "c_ujq6fx7x",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_8oga0x7z",
+        "id": "c_jz6us7rp",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
-        "obligatorio": true
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_cgdc5tao",
+        "id": "c_422ta83r",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_u7myow8d",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_1cjfx5li",
+        "id": "c_t8cq1xgb",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_kwe4bx4l",
+        "id": "c_ngz6wmdw",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
       },
       {
-        "id": "c_r9tjq8zg",
+        "id": "c_0fgzvrct",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_lt4q9bc2",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_be3yqy5f",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_u7bfxq7b",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_zegbl2qg",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_v3dr2h2p",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -5267,7 +6868,7 @@
     "plantilla_id": null,
     "campos": [
       {
-        "id": "c_vwwusxlm",
+        "id": "c_39yl9ue4",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -5275,7 +6876,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_t2pnjka3",
+        "id": "c_21vmefoz",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -5284,7 +6885,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_4mqa78ra",
+        "id": "c_tp7bd4w1",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "Ciudad o centro de salud",
@@ -5292,7 +6893,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_pkianouo",
+        "id": "c_aragdx5o",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -5300,7 +6901,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_f0onjpi1",
+        "id": "c_31yhxso7",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
@@ -5308,7 +6909,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_63yk03o4",
+        "id": "c_vbgr8w2m",
         "tipo": "numero",
         "ancho": "tercio",
         "ayuda": "Años cumplidos",
@@ -5316,7 +6917,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_gkwwjwga",
+        "id": "c_aietdn1t",
         "tipo": "opcion_unica",
         "ancho": "tercio",
         "ayuda": "",
@@ -5334,7 +6935,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_btgdjz0i",
+        "id": "c_h1xjg2y8",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -5342,7 +6943,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_frml29q2",
+        "id": "c_rgybxkpm",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "Proyecto o departamento",
@@ -5350,7 +6951,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_l48c1cqg",
+        "id": "c_21b07g2r",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -5358,7 +6959,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_433e1i1p",
+        "id": "c_e6zvlhyl",
         "tipo": "opcion_unica",
         "ancho": "mitad",
         "ayuda": "",
@@ -5374,7 +6975,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_0bq1s9ry",
+        "id": "c_2ld05nhq",
         "tipo": "texto",
         "ancho": "completo",
         "ayuda": "Si aplica",
@@ -5382,7 +6983,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_llwb7sjw",
+        "id": "c_r6f7qnez",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -5390,7 +6991,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_h55hewlg",
+        "id": "c_w9heyce4",
         "tipo": "opcion_multiple",
         "ancho": "completo",
         "ayuda": "Marque los factores de riesgo del puesto",
@@ -5406,7 +7007,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_je2ab2rv",
+        "id": "c_qgm5v2ww",
         "tipo": "opcion_multiple",
         "ancho": "completo",
         "ayuda": "Marque los estudios efectuados",
@@ -5425,7 +7026,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_ndfdw79w",
+        "id": "c_g84d4r9v",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -5433,7 +7034,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_cxz2ei92",
+        "id": "c_4k00ilu6",
         "tipo": "opcion_unica",
         "ancho": "mitad",
         "ayuda": "",
@@ -5447,7 +7048,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_12pgyme6",
+        "id": "c_vfua9bq1",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "Detalle recomendaciones médicas, ergonomía o medicamentos requeridos",
@@ -5455,44 +7056,179 @@
         "obligatorio": false
       },
       {
-        "id": "c_rpkzggm0",
+        "id": "c_btr23qiu",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "5. Certificación médica profesional",
+        "etiqueta": "Validación de la inspección",
         "obligatorio": false
       },
       {
-        "id": "c_j36tcfkj",
-        "tipo": "texto",
-        "ancho": "mitad",
-        "ayuda": "",
-        "etiqueta": "Médico tratante: nombre y apellido",
-        "obligatorio": true
-      },
-      {
-        "id": "c_nawnga41",
+        "id": "c_a08ekxdr",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Cédula de identidad",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_izxtnsrt",
+        "id": "c_kz40aq15",
         "tipo": "texto",
         "ancho": "tercio",
-        "ayuda": "Nº MPPS / Colegio Médico",
-        "etiqueta": "Registro médico / MPPS",
+        "ayuda": "",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_wlxdsc4e",
+        "id": "c_o2nqw4c6",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false
+      },
+      {
+        "id": "c_lbpj8t22",
         "tipo": "firma",
         "ancho": "completo",
-        "ayuda": "Firma del médico ocupacional",
-        "etiqueta": "Firma y sello del médico",
+        "ayuda": "",
+        "etiqueta": "Firma",
         "obligatorio": true
+      },
+      {
+        "id": "c_c50b8y5d",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_nwnguczh",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_9ier7u8h",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_0imjyjcm",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_rsezytkw",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_2837c6qc",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_6k8djzr5",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_swk8temp",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_xkc5i8xo",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_mxlvz4qk",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_e2gjr81b",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_mqf7zk94",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_yxfiblej",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_gublmntf",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_k7orfqla",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   },
@@ -5507,7 +7243,7 @@
     "plantilla_id": null,
     "campos": [
       {
-        "id": "c_5hrdu4xs",
+        "id": "c_09lzrk79",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -5515,7 +7251,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_zjnvc7hr",
+        "id": "c_ufu6py06",
         "tipo": "fecha",
         "ancho": "tercio",
         "ayuda": "",
@@ -5524,7 +7260,7 @@
         "hoyPorDefecto": true
       },
       {
-        "id": "c_6c2cu7on",
+        "id": "c_ftlo4qdb",
         "tipo": "texto",
         "ancho": "mitad",
         "ayuda": "",
@@ -5532,7 +7268,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_z3jbck88",
+        "id": "c_xvh7katq",
         "tipo": "tabla_verificacion",
         "ancho": "completo",
         "etiqueta": "2. Inspección de equipos de protección personal (EPP)",
@@ -5571,7 +7307,7 @@
         "obligatorio": true
       },
       {
-        "id": "c_d0tgsiwg",
+        "id": "c_ydshlv76",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -5579,7 +7315,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_0odwmqx5",
+        "id": "c_mf4nnkm9",
         "tipo": "parrafo",
         "ancho": "completo",
         "ayuda": "",
@@ -5587,7 +7323,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_ggomf9pm",
+        "id": "c_5d0p92k3",
         "tipo": "foto",
         "ancho": "completo",
         "ayuda": "Adjunte fotos del equipo o hallazgos encontrados",
@@ -5596,7 +7332,7 @@
         "obligatorio": false
       },
       {
-        "id": "c_l9ln1p0v",
+        "id": "c_8p6fvdhr",
         "tipo": "seccion",
         "ancho": "completo",
         "ayuda": "",
@@ -5604,68 +7340,171 @@
         "obligatorio": false
       },
       {
-        "id": "c_uh17j8qo",
+        "id": "c_59c81do6",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: nombre y apellido",
+        "etiqueta": "Nombre y apellido",
         "obligatorio": true
       },
       {
-        "id": "c_09vs9kkh",
+        "id": "c_ouz1egnt",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cédula",
+        "etiqueta": "Cédula",
         "obligatorio": true
       },
       {
-        "id": "c_4a3yjtu7",
+        "id": "c_b34kuqaa",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: cargo",
+        "etiqueta": "Cargo",
         "obligatorio": false
       },
       {
-        "id": "c_fbmenui3",
+        "id": "c_j84rx6pr",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Inspector SIHO: firma",
+        "etiqueta": "Firma",
         "obligatorio": true
       },
       {
-        "id": "c_do7002g3",
+        "id": "c_yiej9c0u",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 2",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_u5wryesu",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor SST: nombre y apellido",
-        "obligatorio": false
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_yu6vk0uc",
+        "id": "c_4fcl5efj",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor SST: cédula",
-        "obligatorio": false
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_c1m3o55i",
+        "id": "c_p6mkt7s1",
         "tipo": "texto",
         "ancho": "tercio",
         "ayuda": "",
-        "etiqueta": "Supervisor SST: cargo",
-        "obligatorio": false
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 2
       },
       {
-        "id": "c_xva1nkbt",
+        "id": "c_gd1t53yk",
         "tipo": "firma",
         "ancho": "completo",
         "ayuda": "",
-        "etiqueta": "Supervisor SST: firma",
-        "obligatorio": false
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 2
+      },
+      {
+        "id": "c_yydu3asn",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 3",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_rm6dfhg6",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_w3stt1eq",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_c37rln36",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_v1mzb3i4",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 3
+      },
+      {
+        "id": "c_fieecy2c",
+        "tipo": "seccion",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Inspector adicional 4",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_11bd2sce",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Nombre y apellido",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_jcy127h6",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cédula",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_gmd478mf",
+        "tipo": "texto",
+        "ancho": "tercio",
+        "ayuda": "",
+        "etiqueta": "Cargo",
+        "obligatorio": false,
+        "grupoAdicional": 4
+      },
+      {
+        "id": "c_s0iuduah",
+        "tipo": "firma",
+        "ancho": "completo",
+        "ayuda": "",
+        "etiqueta": "Firma",
+        "obligatorio": false,
+        "grupoAdicional": 4
       }
     ]
   }

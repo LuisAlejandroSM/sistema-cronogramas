@@ -59,16 +59,21 @@ def build_findings():
         {"id": uid(), "tipo": "foto", "ancho": "completo", "ayuda": "Adjunte fotos del equipo o hallazgos encontrados", "etiqueta": "Evidencia fotográfica", "maxFotos": 5, "obligatorio": False}
     ]
 
-def build_validation(firmas):
-    campos = [{"id": uid(), "tipo": "seccion", "ancho": "completo", "ayuda": "", "etiqueta": "Validación de la inspección", "obligatorio": False}]
-    for f in firmas:
-        rol = f["rol"]
-        req = f.get("obligatorio", True)
+def build_validation(firmas=None, max_adicionales=3):
+    campos = [
+        {"id": uid(), "tipo": "seccion", "ancho": "completo", "ayuda": "", "etiqueta": "Validación de la inspección", "obligatorio": False},
+        {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Nombre y apellido", "obligatorio": True},
+        {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Cédula", "obligatorio": True},
+        {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Cargo", "obligatorio": False},
+        {"id": uid(), "tipo": "firma", "ancho": "completo", "ayuda": "", "etiqueta": "Firma", "obligatorio": True},
+    ]
+    for g in range(2, 2 + max_adicionales):
         campos.extend([
-            {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": f"{rol}: nombre y apellido", "obligatorio": req},
-            {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": f"{rol}: cédula", "obligatorio": req},
-            {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": f"{rol}: cargo", "obligatorio": False},
-            {"id": uid(), "tipo": "firma", "ancho": "completo", "ayuda": "", "etiqueta": f"{rol}: firma", "obligatorio": req},
+            {"id": uid(), "tipo": "seccion", "ancho": "completo", "ayuda": "", "etiqueta": f"Inspector adicional {g}", "obligatorio": False, "grupoAdicional": g},
+            {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Nombre y apellido", "obligatorio": False, "grupoAdicional": g},
+            {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Cédula", "obligatorio": False, "grupoAdicional": g},
+            {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Cargo", "obligatorio": False, "grupoAdicional": g},
+            {"id": uid(), "tipo": "firma", "ancho": "completo", "ayuda": "", "etiqueta": "Firma", "obligatorio": False, "grupoAdicional": g},
         ])
     return campos
 
@@ -87,6 +92,85 @@ def tabla(etiqueta, filas, columnas=None, ayuda="B = Bueno · M = Malo · N/A = 
     }
 
 formularios = []
+
+# =========================================================================
+# 1. INSPECCION DE VEHICULOS LIVIANOS (CVC-SST-FT-00)
+# =========================================================================
+f1_campos = [
+    {"id": uid(), "tipo": "seccion", "ancho": "completo", "ayuda": "", "etiqueta": "1. Datos generales", "obligatorio": False},
+    {"id": uid(), "tipo": "fecha", "ancho": "tercio", "ayuda": "", "etiqueta": "Fecha", "obligatorio": True, "hoyPorDefecto": True},
+    {"id": uid(), "tipo": "texto", "ancho": "mitad", "ayuda": "Ej. COB", "etiqueta": "Centro de trabajo", "obligatorio": True},
+    {"id": uid(), "tipo": "seccion", "ancho": "completo", "ayuda": "", "etiqueta": "2. Datos del conductor y documentación", "obligatorio": False},
+    {"id": uid(), "tipo": "texto", "ancho": "mitad", "ayuda": "", "etiqueta": "Nombres y apellidos", "obligatorio": True},
+    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Nº de licencia", "obligatorio": True},
+    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Tipo de licencia", "obligatorio": True},
+    {"id": uid(), "tipo": "fecha", "ancho": "tercio", "ayuda": "", "etiqueta": "Vigencia de la licencia", "obligatorio": True, "hoyPorDefecto": False},
+    {"id": uid(), "tipo": "fecha", "ancho": "tercio", "ayuda": "", "etiqueta": "Vigencia del certificado médico", "obligatorio": True, "hoyPorDefecto": False},
+    {"id": uid(), "tipo": "si_no", "ancho": "tercio", "ayuda": "", "etiqueta": "Manejo defensivo", "obligatorio": True},
+    {"id": uid(), "tipo": "fecha", "ancho": "tercio", "ayuda": "", "etiqueta": "Manejo defensivo: vence", "obligatorio": False, "hoyPorDefecto": False},
+    {"id": uid(), "tipo": "seccion", "ancho": "completo", "ayuda": "", "etiqueta": "3. Datos del vehículo", "obligatorio": False},
+    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Marca", "obligatorio": True},
+    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Clase", "obligatorio": True},
+    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Modelo", "obligatorio": True},
+    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Color", "obligatorio": True},
+    {"id": uid(), "tipo": "numero", "ancho": "tercio", "ayuda": "", "etiqueta": "Año", "obligatorio": True},
+    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Placa", "obligatorio": True},
+    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Capacidad", "obligatorio": False},
+    {"id": uid(), "tipo": "numero", "ancho": "tercio", "ayuda": "", "etiqueta": "Kilometraje (km)", "obligatorio": True},
+    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Póliza de seguro Nº", "obligatorio": False},
+    tabla("Fluidos", ["COMBUSTIBLE", "REFRIGERANTE", "LIGA DE FRENOS", "ACEITE DE MOTOR", "HIDRÁULICO", "ACEITE DE CAJA"]),
+    {"id": uid(), "tipo": "seccion", "ancho": "completo", "ayuda": "", "etiqueta": "4. Elementos de emergencia y seguridad", "obligatorio": False},
+    {"id": uid(), "tipo": "opcion_unica", "ancho": "tercio", "ayuda": "", "etiqueta": "Tipo de extintor", "opciones": ["PQS", "CO2"], "obligatorio": True},
+    {"id": uid(), "tipo": "numero", "ancho": "tercio", "ayuda": "", "etiqueta": "Capacidad del extintor (LBS)", "obligatorio": True},
+    {"id": uid(), "tipo": "fecha", "ancho": "tercio", "ayuda": "", "etiqueta": "Fecha de vencimiento del extintor", "obligatorio": True, "hoyPorDefecto": False},
+    tabla("Elementos de emergencia", [
+        "TRIÁNGULOS / CONOS", "LLAVE DE AJUSTE", "GATO", "MANGA DE VIENTO", "LINTERNA", "BOTIQUÍN",
+        "DIM'S (IDENTIFICADOR DE CONDUCTOR)", "CÁMARA DE FATIGA", "CAJA DE HERRAMIENTAS O MALLA DE RESTRICCIÓN", "CHALECOS REFLECTIVOS"
+    ], ["SI", "NO"]),
+    tabla("5. Sistema eléctrico", [
+        "LUCES DE ALTA Y BAJAS", "LUCES DE FRENO", "LUCES DE CRUCE O GIRO", "LUCES DE RETROCESO", "LUCES INTERMITENTES",
+        "LUZ DE CABINA", "BOCINA O CORNETA", "ALARMA DE RETROCESO", "AIRE ACONDICIONADO", "LIMPIAPARABRISAS", "INDICADORES DE COMBUSTIBLE Y OTROS"
+    ]),
+    tabla("6. Sistema mecánico", [
+        "VELOCÍMETRO / ODÓMETRO", "RADIADOR", "DEPÓSITO DE AGUA DEL MOTOR", "CAÑO DE ESCAPE / SILENCIADOR", "SISTEMA DE DIRECCIÓN"
+    ]),
+    tabla("7. Neumáticos", [
+        "DELANTERO DERECHO", "DELANTERO IZQUIERDO", "TRASERO DERECHO", "TRASERO IZQUIERDO", "REPUESTO 1", "CUÑAS DE SEGURIDAD"
+    ]),
+    tabla("8. Tapicería", [
+        "ASIENTO DEL CONDUCTOR", "ASIENTO DEL COPILOTO / ACOMPAÑANTE", "ASIENTO TRASERO", "TODOS LOS ASIENTOS CON APOYA CABEZA"
+    ]),
+    tabla("9. Cristalería", [
+        "PARABRISAS", "VIDRIOS PUERTAS DELANTERAS", "VIDRIOS PUERTAS TRASERAS", "VIDRIO TRASERO", "ESPEJOS RETROVISORES LATERALES"
+    ]),
+    tabla("10. Especificaciones especiales", [
+        "CINTURÓN DE SEGURIDAD DE 3 PUNTOS PARA TODOS LOS OCUPANTES", "ASIENTOS CON REPOSACABEZAS", "RECORDATORIO DE USO DEL CINTURÓN DE SEGURIDAD",
+        "ANCLAJES DE CINTURONES DE SEGURIDAD SEGÚN REQUISITOS DE LA INDUSTRIA", "SISTEMA DE FRENOS ANTIBLOQUEO QUE CUMPLA CON LOS REQUISITOS DE LA INDUSTRIA",
+        "PROTECCIÓN ACTIVA ANTIVUELCO (ARP) EN EL REMOLQUE", "PROTECCIÓN CONTRA VUELCOS SEGÚN LOS REQUISITOS DE LA INDUSTRIA",
+        "LOS NEUMÁTICOS DEBEN SER DEL MISMO TAMAÑO / MISMO FABRICANTE POR EJE",
+        "NEUMÁTICOS ADECUADOS A LA CARGA/VELOCIDAD, INFLADOS CORRECTAMENTE, PROFUNDIDAD MÍNIMA DE LA BANDA DE RODADURA 1,6 MM (75 %)",
+        "INDICADORES DE POSICIÓN EN LAS TUERCAS DE LOS NEUMÁTICOS", "NEUMÁTICOS DELANTEROS CON BANDA DE RODADURA MÍNIMA DE 3,0 MM Y EL MISMO TAMAÑO/MARCA",
+        "GUARDABARROS EN TODOS LOS NEUMÁTICOS", "NO SE PERMITEN NEUMÁTICOS RECONSTRUIDOS (PRINCIPALMENTE EN EL EJE DELANTERO)",
+        "CABINA QUE CUMPLE CON LOS REQUISITOS DE LA INDUSTRIA", "PROTECCIÓN ANTIEMPOTRAMIENTO DELANTERA Y TRASERA PARA EL REMOLQUE",
+        "PROTECCIÓN LATERAL CONTRA COLISIÓN", "VIDRIO DE SEGURIDAD PARA PARABRISAS", "DOS CALZAS PARA RUEDAS",
+        "SISTEMA DE CONTROL ELECTRÓNICO DE ESTABILIDAD", "TODOS LOS ACCESORIOS Y ESCOTILLAS ASEGURADOS SIN FUGAS EN CASO DE VUELCO",
+        "2 EXTINTORES MÍNIMO (UNO DE 2 KG EN CABINA Y OTRO DE 6 KG MÍNIMO EN REMOLQUE)", "CINTURONES DE SEGURIDAD Y SISTEMAS DE RETENCIÓN SEGÚN REQUISITOS DE LA INDUSTRIA",
+        "MÍNIMO 2 PUERTAS (UNA NORMAL Y UNA DE EMERGENCIA)", "PUERTA(S) DE EMERGENCIA CLARAMENTE MARCADAS",
+        "MARCAS REFLECTANTES EN LA PARTE TRASERA Y EN LOS LATERALES", "DIMS SEGÚN CONTRATO", "ALARMA SONORA DE MARCHA ATRÁS"
+    ], ["SI", "NO", "N/A"], ayuda="Varios ítems aplican solo a vehículos con remolque: marque N/A cuando no correspondan."),
+] + build_findings() + build_validation()
+
+formularios.append({
+    "id": "387340ad-b5d2-4947-9cab-f23c459aa213",
+    "titulo": "Constancia de inspección de vehículos livianos",
+    "descripcion": "Inspección del vehículo liviano antes de su uso. Marque cada ítem como Bueno (B), Malo (M) o No aplica (N/A) y registre los hallazgos al final.",
+    "codigo": "CVC-SST-FT-00",
+    "emision": "Jun-2026",
+    "revision": "02",
+    "rol": "Inspector SIHO",
+    "plantilla_id": None,
+    "campos": f1_campos
+})
 
 # =========================================================================
 # 2. INSPECCION DE ESLINGAS (CVC-SST-FT-107)
@@ -749,12 +833,7 @@ f15_campos = [
         "Apto / Elegible sin restricciones", "Apto / Elegible con restricciones", "No Elegible temporalmente", "No Elegible permanente"
     ], "obligatorio": True},
     {"id": uid(), "tipo": "parrafo", "ancho": "completo", "ayuda": "Detalle recomendaciones médicas, ergonomía o medicamentos requeridos", "etiqueta": "Observaciones y recomendaciones médicas", "obligatorio": False},
-    {"id": uid(), "tipo": "seccion", "ancho": "completo", "ayuda": "", "etiqueta": "5. Certificación médica profesional", "obligatorio": False},
-    {"id": uid(), "tipo": "texto", "ancho": "mitad", "ayuda": "", "etiqueta": "Médico tratante: nombre y apellido", "obligatorio": True},
-    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "", "etiqueta": "Cédula de identidad", "obligatorio": True},
-    {"id": uid(), "tipo": "texto", "ancho": "tercio", "ayuda": "Nº MPPS / Colegio Médico", "etiqueta": "Registro médico / MPPS", "obligatorio": True},
-    {"id": uid(), "tipo": "firma", "ancho": "completo", "ayuda": "Firma del médico ocupacional", "etiqueta": "Firma y sello del médico", "obligatorio": True},
-]
+] + build_validation()
 
 formularios.append({
     "id": "2db300b8-76e9-4342-91ad-8e91a2355561",

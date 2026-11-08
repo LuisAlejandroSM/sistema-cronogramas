@@ -152,6 +152,7 @@ export function normalizarCampos(entrada) {
       campo.maxFotos = Number.isInteger(max) && max >= 1 && max <= MAX_FOTOS_POR_CAMPO ? max : 3;
     }
     if (c.tipo === "fecha") campo.hoyPorDefecto = c.hoyPorDefecto === true;
+    if (c.grupoAdicional) campo.grupoAdicional = Number.parseInt(c.grupoAdicional, 10);
     campos.push(campo);
   }
 
