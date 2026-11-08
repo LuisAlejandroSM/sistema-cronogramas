@@ -7,18 +7,19 @@ const CLASE_CAMPO =
   "mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 focus:border-marca focus:outline-none focus:ring-2 focus:ring-marca/30";
 
 export default function FormularioLogin() {
-  const [estado, accion, isPending] = useActionState(iniciarSesion, { error: "", correo: "" });
+  const [estado, accion, isPending] = useActionState(iniciarSesion, { error: "", identificador: "" });
 
   return (
     <form action={accion} className="space-y-4">
       <label className="block text-sm font-medium text-slate-700">
-        Correo
+        Usuario
         <input
-          name="correo"
-          type="email"
+          name="identificador"
+          type="text"
           required
           autoComplete="username"
-          defaultValue={estado.correo}
+          placeholder="Nombre de usuario"
+          defaultValue={estado.identificador || estado.correo || ""}
           className={CLASE_CAMPO}
         />
       </label>

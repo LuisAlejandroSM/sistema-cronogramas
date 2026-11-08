@@ -10,6 +10,7 @@ import { autorizarAccion } from "@/modules/auth/dal";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const CORREO_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const USUARIO_RE = /^[a-zA-Z0-9._-]+$/;
 // Roles que se pueden asignar desde la pantalla de gestión.
 const ROLES_ASIGNABLES = [...ROLES_OPERATIVOS, ROL_ADMINISTRACION];
 
@@ -36,7 +37,7 @@ async function otrosAdminsActivos(excluirId) {
 /**
  * Registra un usuario y le genera una contraseña temporal (se muestra una sola vez al admin).
  * El rol "Administración" crea un administrador que no ejecuta inspecciones.
- * @param {{ nombre: string, rol: string, correo: string, cargo?: string }} entrada
+ * @param {{ nombre: string, rol: string, usuario?: string, correo?: string, cargo?: string }} entrada
  */
 export async function crearInspector(entrada) {
   const auth = await autorizarAccion({ soloAdmin: true });
@@ -44,7 +45,8 @@ export async function crearInspector(entrada) {
 
   const nombre = texto(entrada?.nombre, 100);
   const rol = String(entrada?.rol ?? "");
-  const correo = texto(entrada?.correo, 150).toLowerCase();
+  const usuario = texto(entrada?.usuario ?? entrada?.alias, 50).toLowerCase();
+  const correo = entrada?.correo ? texto(entrada?.correo, 150).toLowerCase() : null;
   const cargo = texto(entrada?.cargo, 100) || null;
 
   if (nombre.length < 3) {
@@ -53,8 +55,12 @@ export async function crearInspector(entrada) {
   if (!ROLES_ASIGNABLES.includes(rol)) {
     return { success: false, error: "Seleccione un rol válido." };
   }
-  if (!CORREO_RE.test(correo)) {
-    return { success: false, error: "Escriba un correo válido: es el usuario para iniciar sesión." };
+  if (usuario) {
+    if (usuario.length < 3 || !USUARIO_RE.test(usuario)) {
+      return { success: false, error: "El usuario debe tener al menos 3 caracteres (solo letras, números, puntos o guiones, sin espacios)." };
+    }
+  } else if (!correo || !CORREO_RE.test(correo)) {
+    return { success: false, error: "Escriba un nombre de usuario válido (mínimo 3 caracteres)." };
   }
 
   const claveTemporal = generarClaveTemporal();
@@ -64,7 +70,8 @@ export async function crearInspector(entrada) {
       .values({
         nombre,
         rol,
-        correo,
+        alias: usuario || null,
+        correo: correo || null,
         cargo,
         activo: true,
         esAdmin: rol === ROL_ADMINISTRACION,
@@ -73,11 +80,11 @@ export async function crearInspector(entrada) {
       })
       .returning({ id: usuarios.id });
     revalidar();
-    return { success: true, id: creado.id, claveTemporal };
+    return { success: true, id: creado.id, claveTemporal, usuario: usuario || correo };
   } catch (error) {
-    // 23505 = unique_violation (correo repetido).
+    // 23505 = unique_violation (alias o correo repetido).
     if (error?.cause?.code === "23505" || error?.code === "23505") {
-      return { success: false, error: "Ya existe un usuario con ese correo." };
+      return { success: false, error: "Ya existe un usuario con ese nombre de usuario." };
     }
     console.error("[usuarios] Error al crear usuario:", error);
     return { success: false, error: "No se pudo guardar el usuario." };
@@ -133,7 +140,10 @@ export async function restablecerClave(entrada) {
 
   const claveTemporal = generarClaveTemporal();
   try {
-    const actualizados = await db
+    const [objetivo] = await db.select({ nombre: usuarios.nombre, alias: usuarios.alias, correo: usuarios.correo }).from(usuarios).where(eq(usuarios.id, id));
+    if (!objetivo) return { success: false, error: "El usuario no existe." };
+
+    await db
       .update(usuarios)
       .set({
         claveHash: await hashearClave(claveTemporal),
@@ -141,11 +151,10 @@ export async function restablecerClave(entrada) {
         intentosFallidos: 0,
         bloqueadoHasta: null,
       })
-      .where(eq(usuarios.id, id))
-      .returning({ id: usuarios.id });
-    if (actualizados.length === 0) return { success: false, error: "El usuario no existe." };
+      .where(eq(usuarios.id, id));
+
     revalidar();
-    return { success: true, claveTemporal };
+    return { success: true, claveTemporal, usuario: objetivo.alias || objetivo.correo };
   } catch (error) {
     console.error("[usuarios] Error al restablecer clave:", error);
     return { success: false, error: "No se pudo restablecer la contraseña." };

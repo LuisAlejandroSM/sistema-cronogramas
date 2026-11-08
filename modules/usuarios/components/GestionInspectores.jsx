@@ -13,7 +13,7 @@ const VISTA_POR_ROL = {
 };
 const ROLES_FORM = [...ROLES_OPERATIVOS, ROL_ADMINISTRACION];
 
-const FORM_VACIO = { nombre: "", correo: "", cargo: "" };
+const FORM_VACIO = { nombre: "", usuario: "", cargo: "" };
 
 const CLASE_CAMPO =
   "mt-1 w-full rounded border border-slate-300 bg-white px-2 py-1.5 text-sm font-normal normal-case tracking-normal text-slate-800";
@@ -36,9 +36,10 @@ function Etiqueta({ children, tono }) {
 /** Panel que muestra una contraseña temporal UNA sola vez para entregarla al usuario. */
 function ClaveTemporal({ datos, onCerrar }) {
   const [copiado, setCopiado] = useState(false);
+  const usuarioTexto = datos.usuario || datos.correo;
   const copiar = async () => {
     try {
-      await navigator.clipboard.writeText(`Correo: ${datos.correo}\nContraseña temporal: ${datos.clave}`);
+      await navigator.clipboard.writeText(`Usuario: ${usuarioTexto}\nContraseña temporal: ${datos.clave}`);
       setCopiado(true);
     } catch {
       setCopiado(false);
@@ -52,8 +53,8 @@ function ClaveTemporal({ datos, onCerrar }) {
         pedirá cambiarla al entrar.
       </p>
       <dl className="mt-3 grid gap-1 font-mono text-sm sm:grid-cols-[auto_1fr] sm:gap-x-3">
-        <dt className="text-emerald-700">Correo</dt>
-        <dd className="select-all">{datos.correo}</dd>
+        <dt className="text-emerald-700">Usuario</dt>
+        <dd className="select-all font-semibold">{usuarioTexto}</dd>
         <dt className="text-emerald-700">Contraseña temporal</dt>
         <dd className="select-all text-base font-bold tracking-wider">{datos.clave}</dd>
       </dl>
@@ -113,7 +114,7 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
           setClaveMostrada({
             titulo: `${datos.nombre.trim()} quedó registrado como ${rol}.`,
             nombre: datos.nombre.trim(),
-            correo: datos.correo.trim().toLowerCase(),
+            usuario: (res?.usuario || datos.usuario).trim().toLowerCase(),
             clave: res.claveTemporal,
             enlace: urlCronograma({ id: res.id, rol }),
           });
@@ -157,7 +158,7 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
           setClaveMostrada({
             titulo: `Nueva contraseña temporal para ${u.nombre}.`,
             nombre: u.nombre,
-            correo: u.correo,
+            usuario: res?.usuario || u.alias || u.correo,
             clave: res.claveTemporal,
             enlace: null,
           });
@@ -241,13 +242,14 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
             </label>
 
             <label className={CLASE_ETIQUETA}>
-              Correo (usuario para entrar) *
+              Usuario *
               <input
                 required
-                type="email"
-                maxLength={150}
-                value={form.correo}
-                onChange={(e) => setForm({ ...form, correo: e.target.value })}
+                type="text"
+                maxLength={50}
+                placeholder="Ej. cperez"
+                value={form.usuario}
+                onChange={(e) => setForm({ ...form, usuario: e.target.value })}
                 className={CLASE_CAMPO}
               />
             </label>
@@ -317,7 +319,7 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
                 <th className="px-4 py-2">Nombre</th>
                 <th className="px-4 py-2">Rol</th>
                 <th className="px-4 py-2">Cargo</th>
-                <th className="px-4 py-2">Correo</th>
+                <th className="px-4 py-2">Usuario</th>
                 <th className="px-4 py-2">Último acceso</th>
                 <th className="px-4 py-2 text-right">Acciones</th>
               </tr>
@@ -339,7 +341,7 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
                     </td>
                     <td className="px-4 py-2">{u.rol}</td>
                     <td className="px-4 py-2 text-slate-600">{u.cargo || "—"}</td>
-                    <td className="px-4 py-2 text-slate-600">{u.correo || "—"}</td>
+                    <td className="px-4 py-2 text-slate-600">{u.alias || u.correo || "—"}</td>
                     <td className="px-4 py-2 text-xs text-slate-500">{u.ultimoAcceso ?? "Nunca"}</td>
                     <td className="whitespace-nowrap px-4 py-2 text-right text-xs">
                       <div className="inline-flex flex-wrap justify-end gap-x-3 gap-y-1">
@@ -348,7 +350,7 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
                             Cronograma
                           </Link>
                         )}
-                        {u.activo && !yo && u.correo && (
+                        {u.activo && !yo && (u.alias || u.correo) && (
                           <button
                             type="button"
                             onClick={() => handleRestablecer(u)}

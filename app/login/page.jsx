@@ -13,7 +13,7 @@ export default function LoginPage() {
         <div className="px-7 pb-8 pt-7">
           <div className="mb-6 text-center">
             <h2 className="text-lg font-bold text-slate-900">Iniciar sesión</h2>
-            <p className="text-sm text-slate-500">Ingrese con el correo y la contraseña que le asignó el administrador.</p>
+            <p className="text-sm text-slate-500">Ingrese con el usuario y la contraseña que le asignó el administrador.</p>
           </div>
           <FormularioLogin />
         </div>

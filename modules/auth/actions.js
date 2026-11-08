@@ -1,6 +1,6 @@
 "use server";
 
-import { eq, sql } from "drizzle-orm";
+import { eq, or, sql } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { db } from "@/db";
 import { usuarios } from "@/db/schema";
@@ -10,8 +10,8 @@ import { borrarSesion, crearSesion } from "./session";
 
 const MAX_INTENTOS = 5;
 const MINUTOS_BLOQUEO = 15;
-const ERROR_GENERICO = "Correo o contraseña incorrectos.";
-// Hash ficticio para que un correo inexistente tarde lo mismo que uno real.
+const ERROR_GENERICO = "Usuario o contraseña incorrectos.";
+// Hash ficticio para que un usuario inexistente tarde lo mismo que uno real.
 const HASH_FICTICIO = "scrypt$AAAAAAAAAAAAAAAAAAAAAA==$" + "A".repeat(86) + "==";
 
 function destinoInicial(usuario) {
@@ -19,12 +19,15 @@ function destinoInicial(usuario) {
   return usuario.esAdmin ? "/dashboard" : "/mi-cronograma";
 }
 
-/** Inicio de sesión con correo y contraseña. Para usar con useActionState. */
+/** Inicio de sesión con usuario (o correo) y contraseña. Para usar con useActionState. */
 export async function iniciarSesion(_estadoPrevio, formData) {
-  const correo = String(formData.get("correo") ?? "").trim().toLowerCase().slice(0, 150);
+  const identificador = String(formData.get("identificador") ?? formData.get("usuario") ?? formData.get("correo") ?? "")
+    .trim()
+    .toLowerCase()
+    .slice(0, 150);
   const clave = String(formData.get("clave") ?? "").slice(0, 200);
-  if (!correo || !clave) {
-    return { error: "Escriba su correo y su contraseña.", correo };
+  if (!identificador || !clave) {
+    return { error: "Escriba su usuario y su contraseña.", identificador };
   }
 
   const [usuario] = await db
@@ -38,19 +41,24 @@ export async function iniciarSesion(_estadoPrevio, formData) {
       bloqueadoHasta: usuarios.bloqueadoHasta,
     })
     .from(usuarios)
-    .where(eq(sql`lower(${usuarios.correo})`, correo))
+    .where(
+      or(
+        eq(sql`lower(${usuarios.alias})`, identificador),
+        eq(sql`lower(${usuarios.correo})`, identificador)
+      )
+    )
     .limit(1);
 
   if (!usuario || !usuario.activo || !usuario.claveHash) {
     await verificarClave(clave, HASH_FICTICIO);
-    return { error: ERROR_GENERICO, correo };
+    return { error: ERROR_GENERICO, identificador };
   }
 
   if (usuario.bloqueadoHasta && new Date(usuario.bloqueadoHasta) > new Date()) {
     const minutos = Math.ceil((new Date(usuario.bloqueadoHasta) - new Date()) / 60000);
     return {
       error: `Demasiados intentos fallidos. Intente de nuevo en ${minutos} minuto(s).`,
-      correo,
+      identificador,
     };
   }
 
@@ -69,7 +77,7 @@ export async function iniciarSesion(_estadoPrevio, formData) {
       error: bloquear
         ? `Demasiados intentos fallidos. La cuenta queda bloqueada ${MINUTOS_BLOQUEO} minutos.`
         : ERROR_GENERICO,
-      correo,
+      identificador,
     };
   }
 
