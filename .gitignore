@@ -56,3 +56,14 @@ next-env.d.ts
 
 # plantilla de variables de entorno (sin secretos): sí va al repositorio
 !.env.example
+
+# Herramientas de IA y desarrollo local (permanecen en PC local, fuera de GitHub)
+.agents/
+skills-lock.json
+AGENTS.md
+CLAUDE.md
+docs/superpowers/
+scripts/analizar_docx.py
+scripts/extraer_excel.py
+scripts/generar_todos_formularios.py
+
