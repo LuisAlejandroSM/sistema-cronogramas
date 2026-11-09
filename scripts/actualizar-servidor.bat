@@ -8,7 +8,7 @@ echo.
 
 cd /d "%~dp0\.."
 
-echo [1/4] Descargando ultimos cambios de GitHub...
+echo [1/5] Descargando ultimos cambios de GitHub...
 git pull
 if errorlevel 1 (
     echo.
@@ -19,15 +19,19 @@ if errorlevel 1 (
 )
 
 echo.
-echo [2/4] Verificando dependencias de software...
+echo [2/5] Verificando dependencias de software...
 call bun install
 
 echo.
-echo [3/4] Verificando migraciones de base de datos...
-call bun run db:migrate
+echo [3/5] Verificando migraciones de base de datos...
+call bun run db:migrate 2>nul
 
 echo.
-echo [4/4] Recompilando la aplicación para producción...
+echo [4/5] Sincronizando catálogo de formularios en base de datos...
+call bun run db:cargar-formularios
+
+echo.
+echo [5/5] Recompilando la aplicación para producción...
 call bun run build
 if errorlevel 1 (
     echo.
