@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState, useTransition } from "react";
 import { ROL_ADMINISTRACION, ROLES_OPERATIVOS } from "@/db/roles";
 import { cambiarAdministrador, cambiarEstadoInspector, crearInspector, restablecerClave } from "../actions";
 
@@ -87,7 +88,9 @@ function ClaveTemporal({ datos, onCerrar }) {
 }
 
 export default function GestionInspectores({ inspectores, rolInicial, usuarioActualId }) {
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const [lista, setLista] = useState(inspectores);
   const [formAbierto, setFormAbierto] = useState(false);
   const [form, setForm] = useState(FORM_VACIO);
   const [rol, setRol] = useState(ROLES_FORM.includes(rolInicial) ? rolInicial : ROLES_FORM[0]);
@@ -95,6 +98,10 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
   const [mensaje, setMensaje] = useState({ tipo: "idle", texto: "" });
   const [claveMostrada, setClaveMostrada] = useState(null);
   const [verInactivos, setVerInactivos] = useState(false);
+
+  useEffect(() => {
+    setLista(inspectores);
+  }, [inspectores]);
 
   const urlCronograma = (i) => (VISTA_POR_ROL[i.rol] ? `/?vista=${VISTA_POR_ROL[i.rol]}&usuario=${i.id}` : null);
 
@@ -118,9 +125,10 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
             clave: res.claveTemporal,
             enlace: urlCronograma({ id: res.id, rol }),
           });
-          setMensaje({ tipo: "idle", texto: "" });
+          setMensaje({ tipo: "ok", texto: `Usuario ${datos.nombre.trim()} creado exitosamente.` });
           setForm(FORM_VACIO);
           setFormAbierto(false);
+          router.refresh();
         } else {
           setErrorForm(res?.error ?? "No se pudo guardar.");
         }
@@ -130,11 +138,17 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
     });
   };
 
-  const ejecutar = (accion, exito) => {
+  const ejecutar = (accion, exito, alExito) => {
     startTransition(async () => {
       try {
         const res = await accion();
-        setMensaje(res?.success ? { tipo: "ok", texto: exito(res) } : { tipo: "error", texto: res?.error ?? "No se pudo completar." });
+        if (res?.success) {
+          setMensaje({ tipo: "ok", texto: exito(res) });
+          alExito?.();
+          router.refresh();
+        } else {
+          setMensaje({ tipo: "error", texto: res?.error ?? "No se pudo completar." });
+        }
       } catch {
         setMensaje({ tipo: "error", texto: "Sin conexión con el servidor." });
       }
@@ -142,10 +156,16 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
   };
 
   const handleEstado = (u) => {
+    const nuevoEstado = !u.activo;
     if (u.activo && !window.confirm(`¿Desactivar a ${u.nombre}? Perderá el acceso; su historial se conserva.`)) return;
+    
+    // Actualización optimista inmediata
+    setLista((prev) => prev.map((item) => (item.id === u.id ? { ...item, activo: nuevoEstado } : item)));
+
     ejecutar(
-      () => cambiarEstadoInspector({ id: u.id, activo: !u.activo }),
-      () => `${u.nombre}: ${u.activo ? "desactivado" : "reactivado"}.`
+      () => cambiarEstadoInspector({ id: u.id, activo: nuevoEstado }),
+      () => `${u.nombre}: ${nuevoEstado ? "reactivado" : "desactivado"}.`,
+      () => {}
     );
   };
 
@@ -162,7 +182,13 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
             clave: res.claveTemporal,
             enlace: null,
           });
-          setMensaje({ tipo: "idle", texto: "" });
+          setMensaje({ tipo: "ok", texto: `Contraseña restablecida para ${u.nombre}.` });
+          setLista((prev) =>
+            prev.map((item) =>
+              item.id === u.id ? { ...item, tieneAcceso: true, debeCambiarClave: true } : item
+            )
+          );
+          router.refresh();
         } else {
           setMensaje({ tipo: "error", texto: res?.error ?? "No se pudo restablecer." });
         }
@@ -175,13 +201,18 @@ export default function GestionInspectores({ inspectores, rolInicial, usuarioAct
   const handleAdmin = (u) => {
     const dar = !u.esAdmin;
     if (!window.confirm(dar ? `¿Dar permiso de administrador a ${u.nombre}?` : `¿Quitar el permiso de administrador a ${u.nombre}?`)) return;
+
+    // Actualización optimista inmediata
+    setLista((prev) => prev.map((item) => (item.id === u.id ? { ...item, esAdmin: dar } : item)));
+
     ejecutar(
       () => cambiarAdministrador({ id: u.id, esAdmin: dar }),
-      () => `${u.nombre}: ${dar ? "ahora es administrador" : "ya no es administrador"}.`
+      () => `${u.nombre}: ${dar ? "ahora es administrador" : "ya no es administrador"}.`,
+      () => {}
     );
   };
 
-  const visibles = inspectores.filter((i) => verInactivos || i.activo);
+  const visibles = lista.filter((i) => verInactivos || i.activo);
 
   return (
     <div className="space-y-4">

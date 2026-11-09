@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
   experimental: {
     serverActions: {
       // Las fotos de formularios se comprimen en el celular (~300 KB) y se suben de a una;

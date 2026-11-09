@@ -19,8 +19,8 @@ export default async function FormularioAsignado({ params }) {
   const { asignacionId } = await params;
   if (!UUID_RE.test(String(asignacionId))) notFound();
   const datos = await obtenerAsignacionCompleta(asignacionId);
-  // Solo el dueño de la asignación puede verla (otro inspector recibe "no encontrado").
-  if (!datos || datos.asignacion.usuarioId !== usuario.id) notFound();
+  // Solo el dueño de la asignación o un administrador pueden verla (otro inspector recibe "no encontrado").
+  if (!datos || (datos.asignacion.usuarioId !== usuario.id && !usuario.esAdmin)) notFound();
   const { asignacion, formulario, respuesta, fotos } = datos;
 
   const encabezado = (
@@ -45,8 +45,11 @@ export default async function FormularioAsignado({ params }) {
   return (
     <div className="mx-auto max-w-3xl space-y-3">
       <div className="flex items-center justify-between">
-        <Link href="/mis-formularios" className="text-sm font-semibold text-blue-700 hover:underline">
-          ← Mis formularios
+        <Link
+          href={usuario.esAdmin ? `/formularios/${formulario.id}/asignar` : "/mis-formularios"}
+          className="text-sm font-semibold text-blue-700 hover:underline"
+        >
+          ← {usuario.esAdmin ? "Volver a asignaciones" : "Mis formularios"}
         </Link>
       </div>
       <BarraEstadoOffline />
