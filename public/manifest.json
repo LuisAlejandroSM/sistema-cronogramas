@@ -1,0 +1,18 @@
+{
+  "name": "Sistema de Cronogramas SST",
+  "short_name": "SST Ceveconca",
+  "description": "Sistema de gestión de cronogramas e inspecciones SST/SIHO para Ceveconca con soporte fuera de línea",
+  "start_url": "/mis-formularios",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1f4b",
+  "theme_color": "#0b1f4b",
+  "icons": [
+    {
+      "src": "/icono-pwa.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

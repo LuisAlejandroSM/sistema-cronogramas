@@ -1,9 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState, useSyncExternalStore, useTransition } from "react";
 import { eliminarFoto, enviarRespuesta, subirFoto } from "../actions";
 import { anchoEfectivo, estaVacio, filasSinResponder, maxArchivos, TIPOS_CAMPO, TIPOS_CON_ARCHIVO } from "../campos";
 import { hoyISO } from "../fechas";
+import { encolarInspeccion } from "../offline/db";
+import { sincronizarCola } from "../offline/sincronizador";
 import CampoFormulario from "./CampoFormulario";
 import { CLASE_ANCHO, CLASE_REJILLA } from "./diseno";
 
@@ -60,6 +63,7 @@ export default function LlenarFormulario(props) {
 
 function FormularioInterno({ asignacionId, formulario, fotosIniciales }) {
   const [isPending, startTransition] = useTransition();
+  const [guardadoEnCola, setGuardadoEnCola] = useState(false);
   const [borradorInicial] = useState(() => leerBorrador(asignacionId));
   // Valores iniciales: fechas con "hoy por defecto" y, encima, lo que haya en el borrador.
   const [valores, setValores] = useState(() => {
@@ -136,6 +140,16 @@ function FormularioInterno({ asignacionId, formulario, fotosIniciales }) {
       try {
         // La firma se envía como PNG (fondo transparente); las fotos se comprimen a JPEG.
         const contenido = campo.tipo === "firma" ? archivo : await comprimirImagen(archivo);
+
+        // Si estamos sin conexión directamente guardamos en local sin esperar error
+        if (typeof navigator !== "undefined" && !navigator.onLine) {
+          const idLocal = `local_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+          const previewUrl = URL.createObjectURL(contenido);
+          setFotos((prev) => [...prev, { id: idLocal, campoId: campo.id, blob: contenido, previewUrl, esLocal: true }]);
+          setErrores((prev) => ({ ...prev, [campo.id]: undefined }));
+          continue;
+        }
+
         const datos = new FormData();
         datos.append("asignacionId", asignacionId);
         datos.append("campoId", campo.id);
@@ -145,10 +159,22 @@ function FormularioInterno({ asignacionId, formulario, fotosIniciales }) {
           setFotos((prev) => [...prev, { id: res.id, campoId: campo.id }]);
           setErrores((prev) => ({ ...prev, [campo.id]: undefined }));
         } else {
-          setErrores((prev) => ({ ...prev, [campo.id]: res?.error ?? "No se pudo subir la foto." }));
+          // Fallback a almacenamiento local si el servidor da error por red
+          const idLocal = `local_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+          const previewUrl = URL.createObjectURL(contenido);
+          setFotos((prev) => [...prev, { id: idLocal, campoId: campo.id, blob: contenido, previewUrl, esLocal: true }]);
+          setErrores((prev) => ({ ...prev, [campo.id]: undefined }));
         }
       } catch {
-        setErrores((prev) => ({ ...prev, [campo.id]: "Sin conexión: no se pudo subir la foto." }));
+        // En caso de corte repentino de red, resguardar localmente
+        try {
+          const idLocal = `local_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+          const previewUrl = URL.createObjectURL(archivo);
+          setFotos((prev) => [...prev, { id: idLocal, campoId: campo.id, blob: archivo, previewUrl, esLocal: true }]);
+          setErrores((prev) => ({ ...prev, [campo.id]: undefined }));
+        } catch {
+          setErrores((prev) => ({ ...prev, [campo.id]: "Error al procesar la imagen." }));
+        }
       } finally {
         setSubiendo((prev) => ({ ...prev, [campo.id]: Math.max(0, (prev[campo.id] ?? 1) - 1) }));
       }
@@ -156,6 +182,10 @@ function FormularioInterno({ asignacionId, formulario, fotosIniciales }) {
   };
 
   const quitarFoto = async (id) => {
+    if (String(id).startsWith("local_")) {
+      setFotos((prev) => prev.filter((f) => f.id !== id));
+      return;
+    }
     const res = await eliminarFoto({ id });
     if (res?.success) setFotos((prev) => prev.filter((f) => f.id !== id));
     else setMensaje({ tipo: "error", texto: res?.error ?? "No se pudo quitar la foto." });
@@ -209,24 +239,101 @@ function FormularioInterno({ asignacionId, formulario, fotosIniciales }) {
     if (!window.confirm("¿Enviar el formulario? Después no podrá modificarlo.")) return;
 
     startTransition(async () => {
+      const hayFotosLocales = fotos.some((f) => f.esLocal && f.blob);
+      const estaSinSenal = typeof navigator !== "undefined" && !navigator.onLine;
+
+      // 1. Si estamos offline o tenemos fotos locales guardadas en memoria: encolar en IndexedDB
+      if (estaSinSenal || hayFotosLocales) {
+        try {
+          await encolarInspeccion({
+            asignacionId,
+            formularioTitulo: formulario.titulo,
+            respuestas: valores,
+            fotos,
+          });
+          try {
+            window.localStorage.removeItem(claveBorrador(asignacionId));
+          } catch {}
+          setGuardadoEnCola(true);
+          setMensaje({
+            tipo: "ok",
+            texto: "✓ Inspección guardada en tu teléfono. Se enviará automáticamente cuando recuperes señal.",
+          });
+          // Si estamos online pero había fotos locales, disparar sincronización en segundo plano
+          if (!estaSinSenal) {
+            sincronizarCola().catch(() => {});
+          }
+          return;
+        } catch (errCola) {
+          console.error("Error al encolar inspección:", errCola);
+          setMensaje({ tipo: "error", texto: "No se pudo guardar en la memoria del teléfono. Intente de nuevo." });
+          return;
+        }
+      }
+
+      // 2. Si estamos online y no hay fotos locales, envío directo al servidor
       try {
         const res = await enviarRespuesta({ asignacionId, respuestas: valores });
         if (res?.success) {
           try {
             window.localStorage.removeItem(claveBorrador(asignacionId));
-          } catch {
-            // Nada que limpiar.
-          }
+          } catch {}
           setMensaje({ tipo: "ok", texto: "Formulario enviado. ¡Gracias!" });
         } else {
           setErrores(res?.errores ?? {});
           setMensaje({ tipo: "error", texto: res?.error ?? "No se pudo enviar." });
         }
       } catch {
-        setMensaje({ tipo: "error", texto: "Sin conexión. Sus respuestas siguen guardadas en este dispositivo." });
+        // En caso de caída de señal repentina durante el envío: salvaguardar en la cola
+        try {
+          await encolarInspeccion({
+            asignacionId,
+            formularioTitulo: formulario.titulo,
+            respuestas: valores,
+            fotos,
+          });
+          try {
+            window.localStorage.removeItem(claveBorrador(asignacionId));
+          } catch {}
+          setGuardadoEnCola(true);
+          setMensaje({
+            tipo: "ok",
+            texto: "✓ Se perdió la conexión. La inspección quedó resguardada en tu teléfono y se enviará sola al volver la señal.",
+          });
+        } catch {
+          setMensaje({ tipo: "error", texto: "Sin conexión. Sus respuestas siguen guardadas en este dispositivo." });
+        }
       }
     });
   };
+
+  if (guardadoEnCola) {
+    return (
+      <div className="mx-auto max-w-2xl rounded-2xl border border-emerald-200 bg-white p-8 text-center shadow-sm">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-3xl text-emerald-700">
+          ✓
+        </div>
+        <h2 className="mt-4 text-xl font-bold text-slate-900">¡Inspección guardada en tu teléfono!</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          La inspección para <strong>{formulario.titulo}</strong> quedó guardada de forma segura en la memoria de tu dispositivo.
+        </p>
+        <div className="my-6 rounded-xl border border-blue-200 bg-blue-50/70 p-4 text-xs text-blue-900">
+          <p className="font-semibold">📡 Sincronización automática activada</p>
+          <p className="mt-1 text-slate-600">
+            En cuanto el teléfono vuelva a detectar conexión Wi-Fi o señal móvil, se enviará automáticamente al servidor y se registrará en el cronograma.
+          </p>
+        </div>
+        <div className="flex flex-col justify-center gap-3 sm:flex-row">
+          <Link
+            href="/mis-formularios"
+            className="rounded-xl bg-blue-700 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-800"
+          >
+            ← Volver a Mis Formularios
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-3xl space-y-3 pb-24">

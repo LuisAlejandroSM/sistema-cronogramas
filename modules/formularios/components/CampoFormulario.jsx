@@ -234,15 +234,21 @@ export default function CampoFormulario({
 
   if (campo.tipo === "firma") {
     const firma = fotos[0];
+    const urlFirma = firma?.previewUrl || (firma?.id ? `/api/archivos/${firma.id}` : null);
     return (
       <div className={marco}>
         <div>{encabezado}</div>
         <div className="mt-2">
           {firma ? (
             <div className="flex flex-wrap items-end gap-3">
-              <div className="h-32 w-full max-w-sm rounded-lg border border-slate-200 bg-white p-1">
-                {/* eslint-disable-next-line @next/next/no-img-element -- firma privada servida por /api/archivos */}
-                <img src={`/api/archivos/${firma.id}`} alt="Firma registrada" className="h-full w-full object-contain" />
+              <div className="relative h-32 w-full max-w-sm rounded-lg border border-slate-200 bg-white p-1">
+                {/* eslint-disable-next-line @next/next/no-img-element -- firma servida por /api/archivos o blob local */}
+                <img src={urlFirma} alt="Firma registrada" className="h-full w-full object-contain" />
+                {firma.esLocal && (
+                  <span className="absolute bottom-1 right-1 rounded bg-amber-100 px-1.5 py-0.5 text-[10px] font-medium text-amber-800">
+                    Guardada en teléfono
+                  </span>
+                )}
               </div>
               {onEliminarFoto && !deshabilitado && (
                 <button
@@ -277,22 +283,30 @@ export default function CampoFormulario({
         <div>{encabezado}</div>
         <p className="mt-0.5 text-xs text-slate-400">Hasta {campo.maxFotos} foto(s)</p>
         <div className="mt-2 flex flex-wrap gap-2">
-          {fotos.map((f) => (
-            <div key={f.id} className="relative h-24 w-24 overflow-hidden rounded-lg border border-slate-200 bg-slate-100">
-              {/* eslint-disable-next-line @next/next/no-img-element -- foto privada servida por /api/archivos */}
-              <img src={`/api/archivos/${f.id}`} alt="Foto adjunta" className="h-full w-full object-cover" />
-              {onEliminarFoto && !deshabilitado && (
-                <button
-                  type="button"
-                  onClick={() => onEliminarFoto(f.id)}
-                  aria-label="Quitar foto"
-                  className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-slate-900/70 text-sm text-white"
-                >
-                  ×
-                </button>
-              )}
-            </div>
-          ))}
+          {fotos.map((f) => {
+            const urlFoto = f.previewUrl || `/api/archivos/${f.id}`;
+            return (
+              <div key={f.id} className="relative h-24 w-24 overflow-hidden rounded-lg border border-slate-200 bg-slate-100">
+                {/* eslint-disable-next-line @next/next/no-img-element -- foto servida por /api/archivos o blob local */}
+                <img src={urlFoto} alt="Foto adjunta" className="h-full w-full object-cover" />
+                {f.esLocal && (
+                  <span className="absolute bottom-1 left-1 rounded bg-amber-500/90 px-1 text-[9px] font-bold text-white">
+                    Offline
+                  </span>
+                )}
+                {onEliminarFoto && !deshabilitado && (
+                  <button
+                    type="button"
+                    onClick={() => onEliminarFoto(f.id)}
+                    aria-label="Quitar foto"
+                    className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-slate-900/70 text-sm text-white"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+            );
+          })}
           {Array.from({ length: subiendo }, (_, i) => (
             <div
               key={`subiendo-${i}`}

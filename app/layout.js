@@ -16,6 +16,20 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Sistema Cronogramas",
   description: "Control operativo de cronogramas mensuales de inspección",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "SST Ceveconca",
+  },
+  icons: {
+    icon: "/icono-pwa.svg",
+    apple: "/icono-pwa.svg",
+  },
+};
+
+export const viewport = {
+  themeColor: "#0b1f4b",
 };
 
 export default function RootLayout({ children }) {

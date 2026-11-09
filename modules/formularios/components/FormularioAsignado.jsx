@@ -5,6 +5,7 @@ import { requerirUsuario } from "@/modules/auth/dal";
 import { textoFecha, textoFechaHora } from "../fechas";
 import { obtenerAsignacionCompleta } from "../queries";
 import EncabezadoFormato from "./EncabezadoFormato";
+import BarraEstadoOffline from "./BarraEstadoOffline";
 import LlenarFormulario from "./LlenarFormulario";
 import VerRespuesta from "./VerRespuesta";
 
@@ -43,9 +44,12 @@ export default async function FormularioAsignado({ params }) {
 
   return (
     <div className="mx-auto max-w-3xl space-y-3">
-      <Link href="/mis-formularios" className="text-sm font-semibold text-blue-700 hover:underline">
-        ← Mis formularios
-      </Link>
+      <div className="flex items-center justify-between">
+        <Link href="/mis-formularios" className="text-sm font-semibold text-blue-700 hover:underline">
+          ← Mis formularios
+        </Link>
+      </div>
+      <BarraEstadoOffline />
       {encabezado}
       {respuesta ? (
         <>
