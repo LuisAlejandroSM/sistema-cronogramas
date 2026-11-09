@@ -183,3 +183,32 @@ export const archivosFormulario = pgTable(
   },
   (table) => [index("archivo_asignacion").on(table.asignacionId)]
 );
+
+// 8. Notificaciones a administradores cuando un inspector no completa una inspección
+// (marcada como "N" o vencida sin ejecutar).
+export const notificaciones = pgTable(
+  "notificaciones",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    tipo: varchar("tipo", { length: 50 }).notNull().default("inspeccion_no_ejecutada"),
+    titulo: varchar("titulo", { length: 255 }).notNull(),
+    mensaje: text("mensaje").notNull(),
+    inspectorId: uuid("inspector_id")
+      .references(() => usuarios.id, { onDelete: "cascade" }),
+    registroId: uuid("registro_id")
+      .references(() => registrosCronograma.id, { onDelete: "cascade" }),
+    asignacionId: uuid("asignacion_id")
+      .references(() => asignacionesFormulario.id, { onDelete: "cascade" }),
+    datos: jsonb("datos"),
+    adminId: uuid("admin_id")
+      .references(() => usuarios.id, { onDelete: "cascade" }),
+    leida: boolean("leida").notNull().default(false),
+    leidaEn: timestamp("leida_en", { withTimezone: true }),
+    creadoEn: timestamp("creado_en", { withTimezone: true }).defaultNow(),
+  },
+  (table) => [
+    index("notificacion_leida").on(table.leida),
+    index("notificacion_inspector").on(table.inspectorId),
+    index("notificacion_creado_en").on(table.creadoEn),
+  ]
+);

@@ -20,6 +20,9 @@ const ICONOS = {
   formularios: (
     <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.59a1 1 0 0 1 .7.29l5.42 5.42a1 1 0 0 1 .29.7V19a2 2 0 0 1-2 2Z" />
   ),
+  notificaciones: (
+    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0" />
+  ),
   "mi-cronograma": (
     <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9 2 2 4-4" />
   ),
@@ -54,6 +57,13 @@ function enlacesDe(usuario) {
         { href: "/", etiqueta: "Cronogramas", icono: "cronogramas" },
         { href: "/formularios", etiqueta: "Formularios", icono: "formularios" },
         { href: "/inspectores", etiqueta: "Inspectores", icono: "inspectores" },
+        {
+          href: "/notificaciones",
+          etiqueta: "Notificaciones",
+          icono: "notificaciones",
+          contador: usuario.notificacionesPendientes,
+          alerta: true,
+        },
       ]
     : [
         { href: "/mi-cronograma", etiqueta: "Mi cronograma", icono: "mi-cronograma" },
@@ -101,14 +111,16 @@ function Contenido({ usuario, colapsada, onNavegar, botonColapsar }) {
               <span className="relative">
                 <Icono nombre={e.icono} />
                 {colapsada && e.contador > 0 && (
-                  <span className="absolute -right-1.5 -top-1.5 h-2.5 w-2.5 rounded-full bg-red-500 ring-2 ring-white" />
+                  <span className={`absolute -right-1.5 -top-1.5 h-2.5 w-2.5 rounded-full ring-2 ring-white ${e.alerta ? "bg-red-600 animate-pulse" : "bg-red-500"}`} />
                 )}
               </span>
               {!colapsada && <span className="flex-1">{e.etiqueta}</span>}
               {!colapsada && e.contador > 0 && (
                 <span
                   aria-label={`${e.contador} pendiente(s)`}
-                  className="rounded-full bg-tinta px-2 py-0.5 text-[11px] font-bold text-white"
+                  className={`rounded-full px-2 py-0.5 text-[11px] font-bold text-white ${
+                    e.alerta ? "bg-red-600 animate-pulse" : "bg-tinta"
+                  }`}
                 >
                   {e.contador}
                 </span>
@@ -173,18 +185,34 @@ export default function BarraLateral({ usuario, colapsadaInicial = false }) {
 
   return (
     <>
-      {/* Celular: barra superior con botón de menú */}
-      <div className="sticky top-0 z-30 flex h-14 items-center gap-3 border-b border-slate-200 bg-white px-4 md:hidden">
-        <button
-          type="button"
-          onClick={() => setAbiertaMovil(true)}
-          aria-label="Abrir menú"
-          aria-expanded={abiertaMovil}
-          className="rounded-lg p-1.5 text-slate-700 hover:bg-slate-100"
-        >
-          <Icono nombre="menu" className="h-6 w-6" />
-        </button>
-        <span className="text-sm font-bold text-slate-900">Sistema de Cronogramas</span>
+      {/* Celular: barra superior con botón de menú y campana de notificaciones */}
+      <div className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-slate-200 bg-white px-4 md:hidden">
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setAbiertaMovil(true)}
+            aria-label="Abrir menú"
+            aria-expanded={abiertaMovil}
+            className="rounded-lg p-1.5 text-slate-700 hover:bg-slate-100"
+          >
+            <Icono nombre="menu" className="h-6 w-6" />
+          </button>
+          <span className="text-sm font-bold text-slate-900">Sistema de Cronogramas</span>
+        </div>
+        {usuario.esAdmin && (
+          <Link
+            href="/notificaciones"
+            className="relative rounded-lg p-2 text-slate-700 hover:bg-slate-100"
+            aria-label="Notificaciones"
+          >
+            <Icono nombre="notificaciones" className="h-5 w-5" />
+            {usuario.notificacionesPendientes > 0 && (
+              <span className="absolute right-1 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-600 px-1 text-[10px] font-bold text-white ring-2 ring-white animate-pulse">
+                {usuario.notificacionesPendientes}
+              </span>
+            )}
+          </Link>
+        )}
       </div>
 
       {/* Celular: panel deslizable */}

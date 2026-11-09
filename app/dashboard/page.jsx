@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import DashboardMetricas from "@/modules/dashboard/components/DashboardMetricas";
+import AlertaDashboardNotificaciones from "@/modules/notificaciones/components/AlertaDashboardNotificaciones";
 
 export const metadata = {
   title: "Dashboard · Sistema Cronogramas",
@@ -24,6 +25,9 @@ function Cargando() {
 export default function DashboardPage({ searchParams }) {
   return (
     <div className="space-y-4">
+      <Suspense fallback={null}>
+        <AlertaDashboardNotificaciones />
+      </Suspense>
       <h2 className="text-xl font-bold text-slate-900">Dashboard</h2>
       <Suspense fallback={<Cargando />}>
         <DashboardMetricas searchParams={searchParams} />

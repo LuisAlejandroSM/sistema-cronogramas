@@ -9,6 +9,7 @@ import { obtenerIdsPlantillasDeRol, obtenerPlantillas } from "@/modules/plantill
 import { autorizarAccion } from "@/modules/auth/dal";
 import { obtenerUsuarioPorId } from "@/modules/usuarios/queries";
 import { sincronizarSinInterrumpir } from "@/modules/formularios/sincronizacion";
+import { notificarInspeccionNoEjecutada, resolverNotificacionInspeccion } from "@/modules/notificaciones/actions";
 import { MESES, construirFecha, diasEnMes, semanaDelMes } from "./constants";
 import { planificarDias } from "./planificacion";
 
@@ -319,11 +320,27 @@ export async function registrarEjecucion(entrada) {
       return { success: false, error: "Esa inspección no está asignada a usted en ese día." };
     }
 
-    // Una "N" anula el formulario pendiente que generó esa P.
-    if (noEjecutado) await sincronizarSinInterrumpir({ usuarioId: usuario.id, mes, anio: anioNum });
+    // Una "N" anula el formulario pendiente que generó esa P y notifica a los administradores.
+    if (noEjecutado) {
+      await sincronizarSinInterrumpir({ usuarioId: usuario.id, mes, anio: anioNum });
+      await notificarInspeccionNoEjecutada({
+        inspectorId: usuario.id,
+        registroId: actualizadas[0].id,
+        plantillaId,
+        fecha: construirFecha(anioNum, mes, dia),
+        mes,
+        anio: anioNum,
+        dia,
+        observacion,
+      });
+    } else if (ejecutado > 0) {
+      await resolverNotificacionInspeccion({ registroId: actualizadas[0].id });
+    }
+
     revalidatePath("/mi-cronograma");
     revalidatePath("/");
     revalidatePath("/dashboard");
+    revalidatePath("/notificaciones");
     return { success: true };
   } catch (error) {
     console.error("[cronogramas] Error al registrar ejecución:", error);

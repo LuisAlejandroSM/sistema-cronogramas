@@ -126,6 +126,29 @@ CREATE INDEX "archivo_asignacion" ON "archivos_formulario" USING btree ("asignac
 CREATE INDEX "asignacion_usuario_estado" ON "asignaciones_formulario" USING btree ("usuario_id","estado");;
 CREATE INDEX "asignacion_formulario" ON "asignaciones_formulario" USING btree ("formulario_id");;
 
+CREATE TABLE IF NOT EXISTS "notificaciones" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"tipo" varchar(50) DEFAULT 'inspeccion_no_ejecutada' NOT NULL,
+	"titulo" varchar(255) NOT NULL,
+	"mensaje" text NOT NULL,
+	"inspector_id" uuid,
+	"registro_id" uuid,
+	"asignacion_id" uuid,
+	"datos" jsonb,
+	"admin_id" uuid,
+	"leida" boolean DEFAULT false NOT NULL,
+	"leida_en" timestamp with time zone,
+	"creado_en" timestamp with time zone DEFAULT now()
+);
+;
+ALTER TABLE "notificaciones" ADD CONSTRAINT "notificaciones_inspector_id_usuarios_id_fk" FOREIGN KEY ("inspector_id") REFERENCES "public"."usuarios"("id") ON DELETE cascade ON UPDATE no action;;
+ALTER TABLE "notificaciones" ADD CONSTRAINT "notificaciones_registro_id_registros_cronograma_id_fk" FOREIGN KEY ("registro_id") REFERENCES "public"."registros_cronograma"("id") ON DELETE cascade ON UPDATE no action;;
+ALTER TABLE "notificaciones" ADD CONSTRAINT "notificaciones_asignacion_id_asignaciones_formulario_id_fk" FOREIGN KEY ("asignacion_id") REFERENCES "public"."asignaciones_formulario"("id") ON DELETE cascade ON UPDATE no action;;
+ALTER TABLE "notificaciones" ADD CONSTRAINT "notificaciones_admin_id_usuarios_id_fk" FOREIGN KEY ("admin_id") REFERENCES "public"."usuarios"("id") ON DELETE cascade ON UPDATE no action;;
+CREATE INDEX IF NOT EXISTS "notificacion_leida" ON "notificaciones" USING btree ("leida");;
+CREATE INDEX IF NOT EXISTS "notificacion_inspector" ON "notificaciones" USING btree ("inspector_id");;
+CREATE INDEX IF NOT EXISTS "notificacion_creado_en" ON "notificaciones" USING btree ("creado_en");;
+
 -- ====================================================================
 -- 1. Usuario Administrador Inicial
 -- ====================================================================
